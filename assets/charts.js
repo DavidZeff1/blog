@@ -4,7 +4,6 @@
    1 SVG unit == 1 CSS pixel and label sizes stay honest at any width.
    ------------------------------------------------------------------ */
 
-const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* Flags are an enhancement, not a dependency: if flags.js is missing the
    charts still draw, just without them. */
 const flag = (typeof FLAG === 'function') ? FLAG : () => '';
@@ -27,7 +26,7 @@ function t(x, y, str, cls, anchor = 'start') {
    ================================================================= */
 function slopeChart(el, opts = {}) {
   const W = Math.max(el.clientWidth, 280);
-  const narrow = W < 620;
+  const narrow = W < 520;
   const row = narrow ? 12.5 : 15;
   const padT = narrow ? 46 : 54;
   const padB = 26;
@@ -92,24 +91,6 @@ function slopeChart(el, opts = {}) {
     'Slope chart of 38 OECD countries ranked by nominal GDP per person versus ' +
     'PPP GDP per person. Israel falls from 11th to 26th, the largest drop in the OECD.',
     head + lines + marks + flags + names);
-
-  /* Draw Israel's line on. The dash properties are stripped once the
-     transition ends so a stalled animation can never leave a broken line. */
-  if (!REDUCED) {
-    const p = el.querySelector('path.is-israel');
-    const len = p && p.getTotalLength ? p.getTotalLength() : 0;
-    if (len > 0) {
-      const clear = () => { p.style.strokeDasharray = ''; p.style.strokeDashoffset = ''; p.style.transition = ''; };
-      p.style.strokeDasharray = len;
-      p.style.strokeDashoffset = len;
-      p.addEventListener('transitionend', clear, { once: true });
-      setTimeout(clear, 2200);                       // belt and braces
-      requestAnimationFrame(() => {
-        p.style.transition = 'stroke-dashoffset 1.15s cubic-bezier(.4,0,.2,1) .25s';
-        p.style.strokeDashoffset = 0;
-      });
-    }
-  }
 }
 
 /* =================================================================
@@ -240,7 +221,7 @@ function budgetChart(el) {
     keys.forEach(([kk, nice], i) => {
       const ww = sw(set[kk]);
       g += `<rect x="${x}" y="${y0}" width="${ww}" height="${barH}" class="bud bud-${i}"/>`;
-      if (ww > (narrow ? 46 : 58)) {
+      if (ww > (narrow ? 46 : 52)) {   // 52 lets "Utilities" get a label at a 40rem column
         g += t(x + ww / 2, y0 + barH / 2 - 2, nice, 'bud-lab', 'middle')
            + t(x + ww / 2, y0 + barH / 2 + 12, '₪' + set[kk].toLocaleString(), 'bud-num', 'middle');
       }

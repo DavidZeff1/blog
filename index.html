@@ -9,78 +9,60 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="David Zeff — Essays on economics, policy and data">
 <meta property="og:description" content="Essays on economics, public policy and the numbers underneath them.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="shell">
-  <header class="masthead">
-    <a class="masthead__name" href="./">David Zeff</a>
-    <nav class="masthead__nav">
-      <a href="./" aria-current="page">Essays</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
+<header>
+  <a href="./"><b>David Zeff</b></a>
+  <nav><a href="./">Essays</a><a href="about.html">About</a></nav>
+</header>
 
-  <main id="main">
-    <section class="hero">
-      <p class="eyebrow">Essay 001 — Featured</p>
-      <h1 class="hero__title">Israel is a rich country that is <em>too expensive</em> to live in</h1>
-      <p class="hero__deck">Rank the OECD by income per person and Israel is 11th. Rank it by what
-        that income buys and we're 26th. Nobody else falls that far.</p>
-      <p class="hero__meta">
-        <span>20 August 2026</span><span>12 min read</span><span>IMF WEO April 2026</span>
-      </p>
+<main id="main">
 
-      <div class="figure figure--wide">
-        <div class="figure__frame">
-          <div data-chart="slope"></div>
-          <p class="figure__src">Each line is one OECD country. On the left, income per person at
-            market exchange rates. On the right, the same income adjusted for what it buys. My own
-            calculation from the IMF World Economic Outlook, April 2026.</p>
-        </div>
-      </div>
-    </section>
+  <h1>Israel is a rich country that is too expensive to live in</h1>
+  <p class="deck">Rank the OECD by income per person and Israel is 11th. Rank it by what that
+    income buys and we're 26th. Nobody else falls that far.</p>
+  <p class="meta"><span>20 August 2026</span><span>12 min read</span><span>IMF WEO April 2026</span></p>
 
-    <section>
-      <nav class="postlist" aria-label="All essays">
-        <a class="postlist__item" href="posts/israel-cost-of-living.html">
-          <span class="postlist__kicker">001 · Economics · 20 Aug 2026</span>
-          <h2 class="postlist__title">Israel Is a Rich Country That Is Too Expensive to Live In</h2>
-          <p class="postlist__blurb">Our prices run about 62% higher than our output per person
-            predicts, which makes Israel the biggest outlier in the OECD. Where the gap comes from,
-            what the OECD recommends, and the three objections I think are fair.</p>
-        </a>
-        <p class="postlist__soon">002 — in progress</p>
-      </nav>
-    </section>
+  <figure>
+    <div data-chart="slope"></div>
+    <figcaption>Each line is one OECD country. On the left, income per person at market exchange
+      rates. On the right, the same income adjusted for what it buys. My own calculation from the
+      IMF World Economic Outlook, April 2026.</figcaption>
+  </figure>
 
-    <section class="bio">
-      <p class="bio__label">Who's writing</p>
-      <div>
-        <p>I'm David Zeff. I work as a budget analyst (תחשיבן) in the social services department of
-          the Gush Etzion Regional Council. Most of my week goes on public budgets: building them,
-          checking them against what actually got spent, and every so often arguing about them.</p>
-        <p>I studied computer science at Sapir College. I write here about economics, public policy,
-          and what turns up when you go and check the numbers yourself. Every chart on this site
-          comes from a dataset you can read in the repository.</p>
-      </div>
-    </section>
-  </main>
+  <h2>Essays</h2>
+  <ul class="posts">
+    <li>
+      <a href="posts/israel-cost-of-living.html">Israel Is a Rich Country That Is Too Expensive to Live In</a>
+      <p>Our prices run about 62% higher than our output per person predicts, which makes Israel
+        the biggest outlier in the OECD. Where the gap comes from, what the OECD recommends, and
+        the three objections I think are fair.</p>
+      <p class="meta">001 · Economics · 20 Aug 2026</p>
+    </li>
+    <li><p>002 — in progress</p></li>
+  </ul>
 
-  <footer class="foot">
-    <span>© 2026 David Zeff · Alon Shvut, Israel</span>
-    <span class="foot__links">
-      <a href="mailto:dpzeff@gmail.com">Email</a>
-      <a href="https://github.com/DavidZeff1">GitHub</a>
-      <a href="https://linkedin.com/in/david-zeff-computerscience141592">LinkedIn</a>
-    </span>
-  </footer>
-</div>
+  <h2>Who's writing</h2>
+  <p>I'm David Zeff. I work as a budget analyst (תחשיבן) in the social services department of the
+    Gush Etzion Regional Council. Most of my week goes on public budgets: building them, checking
+    them against what actually got spent, and every so often arguing about them.</p>
+  <p>I studied computer science at Sapir College. I write here about economics, public policy, and
+    what turns up when you go and check the numbers yourself. Every chart on this site comes from
+    a dataset you can read in the repository.</p>
+
+</main>
+
+<footer>
+  <span>© 2026 David Zeff · Alon Shvut, Israel</span>
+  <span>
+    <a href="mailto:dpzeff@gmail.com">Email</a>
+    <a href="https://github.com/DavidZeff1">GitHub</a>
+    <a href="https://linkedin.com/in/david-zeff-computerscience141592">LinkedIn</a>
+  </span>
+</footer>
 
 <script src="assets/data.js"></script>
 <script src="assets/flags.js"></script>
