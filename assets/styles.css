@@ -1,107 +1,124 @@
 /* ------------------------------------------------------------------
-   Minimal stylesheet. System fonts, one column, one accent colour.
-   No web fonts, so no external requests.
+   Georgia for reading, Tableau's palette for the charts.
    ------------------------------------------------------------------ */
 
 :root {
-  --fg:     #111;
-  --muted:  #666;
-  --line:   #ddd;
-  --accent: #b3311f;
-  --mono:   ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Tableau 10 */
+  --blue:   #4E79A7;
+  --orange: #F28E2B;
+  --red:    #E15759;
+  --green:  #59A14F;
+  --purple: #B07AA1;
+  --brown:  #9C755F;
+  --grey:   #BAB0AC;
+
+  --text:  #333;
+  --muted: #767676;
+  --line:  #ddd;
+  --sans:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
+* { box-sizing: border-box; }
 
 body {
-  max-width: 40rem;
+  max-width: 36rem;
   margin: 0 auto;
-  padding: 2.5rem 1.25rem 4rem;
+  padding: 30px 20px 60px;
   background: #fff;
-  color: var(--fg);
-  font: 1.0625rem/1.6 system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  font: 18px/1.7 Georgia, "Times New Roman", serif;
 }
 
-a { color: inherit; text-decoration-color: var(--line); text-underline-offset: .15em; }
-a:hover { text-decoration-color: var(--accent); }
+a { color: var(--blue); }
+a:hover { color: var(--red); }
 
 /* --- header and footer --- */
 header, footer {
-  display: flex; justify-content: space-between; flex-wrap: wrap;
-  gap: .5rem 1rem; font-size: .85rem;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  font-family: var(--sans); font-size: 14px;
 }
-header { margin-bottom: 3rem; }
-footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); }
-nav a + a, footer span a + a { margin-left: .9rem; }
+header { margin-bottom: 40px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+footer { margin-top: 60px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); }
+header > a { font-weight: bold; color: var(--text); text-decoration: none; }
+nav a + a, footer span a + a { margin-left: 14px; }
 
 /* --- text --- */
-h1 { font-size: 1.8rem; line-height: 1.2; margin: 0 0 .6rem; letter-spacing: -.01em; }
-h2 { font-size: 1.15rem; margin: 2.6rem 0 .6rem; }
-h3 { font-size: 1rem; margin: 1.8rem 0 .4rem; }
-p  { margin: 0 0 1.1rem; }
-ul, ol { padding-left: 1.2rem; }
-li { margin-bottom: .4rem; }
+h1 { font-size: 32px; line-height: 1.25; margin: 0 0 12px; }
+h2 { font-size: 23px; margin: 44px 0 10px; }
+h3 { font-size: 19px; margin: 30px 0 6px; }
+p  { margin: 0 0 20px; }
+ul, ol { padding-left: 24px; }
+li { margin-bottom: 8px; }
 
-.deck { font-size: 1.15rem; color: var(--muted); margin-bottom: .8rem; }
-.meta { font-family: var(--mono); font-size: .75rem; color: var(--muted); margin-bottom: 2.5rem; }
-.meta span + span::before { content: " · "; }
+.deck { font-size: 21px; color: #555; margin-bottom: 14px; }
+.meta { font-family: var(--sans); font-size: 13px; color: var(--muted); margin-bottom: 36px; }
+.meta span + span::before { content: " | "; }
 
-blockquote { margin: 2.2rem 0; padding-left: 1rem; border-left: 2px solid var(--accent); font-size: 1.15rem; }
-aside { margin: 2.2rem 0; padding-left: 1rem; border-left: 2px solid var(--line); font-size: .95rem; color: var(--muted); }
-aside b { color: var(--fg); }
+blockquote { margin: 34px 0; padding: 4px 0 4px 18px; border-left: 4px solid var(--blue);
+             font-size: 21px; font-style: italic; }
+aside { margin: 34px 0; padding: 14px 18px; background: #f7f7f7; border: 1px solid var(--line);
+        font-size: 16px; }
+aside p:last-child { margin-bottom: 0; }
 
 /* --- key numbers --- */
-dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: 1.2rem;
-     margin: 2rem 0; padding: 1.2rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-dt { font-family: var(--mono); font-size: .7rem; color: var(--muted); }
-dd { margin: .25rem 0 0; font-size: 1.4rem; line-height: 1.1; }
-dd small { display: block; font-size: .8rem; color: var(--muted); margin-top: .3rem; line-height: 1.4; }
-.hi dd { color: var(--accent); }
+dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px;
+     margin: 30px 0; padding: 18px; border: 1px solid var(--line); background: #f7f7f7; }
+dt { font-family: var(--sans); font-size: 12px; color: var(--muted); }
+dd { margin: 4px 0 0; font-size: 26px; line-height: 1.15; }
+dd small { display: block; font-family: var(--sans); font-size: 13px; color: var(--muted);
+           margin-top: 4px; line-height: 1.4; }
+.hi dd { color: var(--red); }
 
-/* --- figures --- */
-figure { margin: 2.2rem 0; }
-figure > p { font-size: .85rem; color: var(--muted); margin-bottom: .6rem; }
-figure > p b { color: var(--fg); }
-figcaption { font-family: var(--mono); font-size: .68rem; line-height: 1.5; color: var(--muted); margin-top: .5rem; }
+/* --- figures: chart in a box, Tableau style --- */
+figure { margin: 34px 0; }
+@media (min-width: 700px) { figure { margin-left: -56px; margin-right: -56px; } }
+figure > p { font-family: var(--sans); font-size: 14px; line-height: 1.5; color: var(--muted);
+             margin-bottom: 8px; }
+figure > p b { display: block; font-size: 16px; color: var(--text); }
+figure > div { border: 1px solid var(--line); padding: 14px 12px; }
+figcaption { font-family: var(--sans); font-size: 12px; line-height: 1.5; color: var(--muted);
+             margin-top: 8px; }
 
 /* --- post list --- */
 .posts { list-style: none; padding: 0; margin: 0; }
-.posts li { margin: 0; padding: 1rem 0; border-top: 1px solid var(--line); }
-.posts a { font-size: 1.1rem; text-decoration: none; }
-.posts a:hover { text-decoration: underline; }
-.posts p { margin: .35rem 0 0; font-size: .95rem; color: var(--muted); }
+.posts li { margin: 0; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.posts > li > a { font-size: 21px; }
+.posts p { margin: 6px 0 0; font-size: 16px; color: #555; }
+.posts .meta { font-size: 13px; margin-top: 8px; }   /* .posts p would otherwise win on size */
 
-/* --- charts (plain SVG, classes come from charts.js) --- */
-/* defaults go on the svg element itself, not on a `.chart-svg text`
-   descendant selector, which would outrank every one-class rule below */
+/* --- charts ---------------------------------------------------------
+   Defaults sit on the svg element itself: a `.chart-svg text` selector
+   would outrank every one-class rule below it.
+   ------------------------------------------------------------------ */
 .chart-svg { display: block; width: 100%; height: auto;
-             font-family: var(--mono); font-size: 10px; fill: var(--muted); }
-.slope-head, .axis-title, .bud-head { font-size: 9px; letter-spacing: .08em; fill: var(--fg); }
-.slope-sub, .axis-lab, .pt-note { font-size: 9px; }
+             font-family: var(--sans); font-size: 11px; fill: var(--muted); }
+.slope-head, .axis-title, .bud-head { font-size: 11px; font-weight: bold; fill: var(--text); }
+.slope-sub, .axis-lab, .pt-note { font-size: 10px; }
 
-.slope-line { stroke: #dcdcdc; stroke-width: 1; }
-.slope-line.is-named { stroke: #aaa; }
-.slope-line.is-israel { stroke: var(--accent); stroke-width: 2; }
-.slope-dot, .dot { fill: #aaa; }
-.slope-dot.is-israel, .dot.is-israel { fill: var(--accent); }
-.slope-name.is-israel, .bar-name.is-israel, .bar-val.is-israel, .pt-name { fill: var(--accent); font-weight: 600; }
+.rule-v, .rule-h { stroke: #e8e8e8; }
+.rule-avg { stroke: #999; stroke-dasharray: 4 3; }
+.trend { stroke: #999; stroke-dasharray: 5 4; }
+.gap-line { stroke: var(--red); stroke-dasharray: 3 2; }
 
-.bar { fill: #d5d5d5; }
-.bar.is-high { fill: #aaa; }
-.bar.is-israel { fill: var(--accent); }
+.slope-line { stroke: #dcdcdc; stroke-width: 1.2; }
+.slope-line.is-named { stroke: var(--grey); }
+.slope-line.is-israel { stroke: var(--red); stroke-width: 2.5; }
+.slope-dot, .dot { fill: var(--blue); }
+.slope-dot.is-israel, .dot.is-israel { fill: var(--red); }
+.slope-name.is-israel, .bar-name.is-israel, .bar-val.is-israel, .pt-name { fill: var(--red); font-weight: bold; }
 
-.rule-v, .rule-h { stroke: var(--line); }
-.rule-avg { stroke: #aaa; stroke-dasharray: 2 3; }
-.trend { stroke: #999; stroke-dasharray: 4 3; }
-.gap-line { stroke: var(--accent); stroke-dasharray: 2 2; }
+.bar { fill: var(--blue); }
+.bar.is-high { fill: var(--orange); }
+.bar.is-israel { fill: var(--red); }
 
-.bud-0 { fill: #9a9a9a; } .bud-1 { fill: #8a8a8a; }
-.bud-2 { fill: #7a7a7a; } .bud-3 { fill: #6a6a6a; }
-.bud-left { fill: var(--accent); }
-.bud-lab, .bud-num { fill: #fff; font-size: 9px; }
-.bud-num { font-size: 10px; font-weight: 600; }
-.bud-foot { fill: var(--accent); }
+/* stacked bar: every fill here is dark enough to carry a white label */
+.bud-0 { fill: var(--blue); }  .bud-1 { fill: var(--brown); }
+.bud-2 { fill: var(--purple); } .bud-3 { fill: var(--red); }
+.bud-left { fill: var(--green); }
+.bud-lab { fill: #fff; font-size: 10px; }
+.bud-num { fill: #fff; font-size: 12px; font-weight: bold; }
+.bud-foot { fill: var(--green); font-size: 11px; font-weight: bold; }
 
 /* --- skip link --- */
 .skip { position: absolute; left: -9999px; }
-.skip:focus { left: .5rem; top: .5rem; background: var(--fg); color: #fff; padding: .4rem .7rem; }
+.skip:focus { left: 8px; top: 8px; background: var(--text); color: #fff; padding: 6px 10px; }
