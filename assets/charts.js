@@ -5,6 +5,9 @@
    ------------------------------------------------------------------ */
 
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* Flags are an enhancement, not a dependency: if flags.js is missing the
+   charts still draw, just without them. */
+const flag = (typeof FLAG === 'function') ? FLAG : () => '';
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const money = n => '$' + Math.round(n).toLocaleString('en-US');
 
@@ -30,7 +33,8 @@ function slopeChart(el, opts = {}) {
   const padB = 26;
   const H = padT + row * 37 + padB;
 
-  const labelW = narrow ? 58 : 128;
+  const fw = narrow ? 12 : 16;            // flag width; height follows at 3:2
+  const labelW = narrow ? 70 : 150;
   const x1 = labelW;
   const x2 = W - labelW;
   const y = r => padT + (r - 1) * row;
@@ -49,7 +53,7 @@ function slopeChart(el, opts = {}) {
     : ['Israel', 'Korea', 'Poland', 'New Zealand', 'Ireland',
        'Luxembourg', 'United States', 'Japan', 'Switzerland']));
 
-  let lines = '', marks = '', names = '';
+  let lines = '', marks = '', names = '', flags = '';
 
   for (const n of NAMES) {
     const a = RANK_NOMINAL[n], b = RANK_PPP[n];
@@ -65,8 +69,11 @@ function slopeChart(el, opts = {}) {
       marks += `<circle cx="${x1}" cy="${y(a)}" r="${isr ? 3.6 : 2.6}" class="${c}"/>`
              + `<circle cx="${x2}" cy="${y(b)}" r="${isr ? 3.6 : 2.6}" class="${c}"/>`;
       const lc = isr ? 'slope-name is-israel' : 'slope-name';
-      names += t(x1 - 8, y(a) + 3.5, `${a} ${short(n)}`, lc, 'end')
-             + t(x2 + 8, y(b) + 3.5, `${b} ${short(n)}`, lc, 'start');
+      /* left column reads  name flag <dot, right column  dot> flag name */
+      flags += flag(n, x1 - 9 - fw, y(a) - fw / 3, fw)
+             + flag(n, x2 + 9, y(b) - fw / 3, fw);
+      names += t(x1 - 14 - fw, y(a) + 3.5, `${a} ${short(n)}`, lc, 'end')
+             + t(x2 + 14 + fw, y(b) + 3.5, `${b} ${short(n)}`, lc, 'start');
     }
   }
 
@@ -84,7 +91,7 @@ function slopeChart(el, opts = {}) {
   el.innerHTML = svgWrap(W, H,
     'Slope chart of 38 OECD countries ranked by nominal GDP per person versus ' +
     'PPP GDP per person. Israel falls from 11th to 26th, the largest drop in the OECD.',
-    head + lines + marks + names);
+    head + lines + marks + flags + names);
 
   /* Draw Israel's line on. The dash properties are stripped once the
      transition ends so a stalled animation can never leave a broken line. */
@@ -115,7 +122,12 @@ function priceLevelChart(el) {
   const row = narrow ? 15 : 17;
   const padT = 34, padB = 30;
   const H = padT + row * order.length + padB;
-  const gut = narrow ? 94 : 116;
+  const fw = narrow ? 12 : 15;
+  const gut = narrow ? 111 : 136;
+  /* Three names won't fit beside a flag on a phone, and the flag is
+     already doing the identifying, so shorten just those three. */
+  const SHORT = { 'United Kingdom': 'UK', 'United States': 'USA', 'New Zealand': 'N. Zealand' };
+  const label = n => narrow ? (SHORT[n] || n) : n;
   const right = narrow ? 40 : 52;
   const max = 140;
   const sx = v => gut + (v / max) * (W - gut - right);
@@ -137,7 +149,8 @@ function priceLevelChart(el) {
     const isr = n === 'Israel';
     g += `<rect x="${gut}" y="${yy + 2}" width="${Math.max(sx(v) - gut, 1)}" height="${row - 5}"
            class="bar ${isr ? 'is-israel' : v > 100 ? 'is-high' : ''}" rx="1"/>`
-       + t(gut - 8, yy + row / 2 + 2.5, n, `bar-name${isr ? ' is-israel' : ''}`, 'end')
+       + flag(n, gut - 8 - fw, yy + row / 2 - fw / 3, fw)
+       + t(gut - 13 - fw, yy + row / 2 + 2.5, label(n), `bar-name${isr ? ' is-israel' : ''}`, 'end')
        + t(sx(v) + 6, yy + row / 2 + 2.5, v.toFixed(1), `bar-val${isr ? ' is-israel' : ''}`, 'start');
   });
 
