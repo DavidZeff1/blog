@@ -5,3 +5,11 @@ node_modules/
 
 # local drafts, not published
 israel-cost-of-living-preview.html
+
+# Gaza MoH named casualty lists — raw source data, not redistributed here.
+# Download from https://www.gazadeaths.org/en/sources into this folder to
+# re-run analysis/gaza-casualty-demographics.ipynb.
+gaza data/
+
+# notebook scratch
+.ipynb_checkpoints/

@@ -22,16 +22,31 @@ Opening `index.html` directly in a browser also works.
 ## How it's put together
 
 ```
-index.html                        home + essay list
+index.html                              home + essay list
 about.html
 posts/
-  israel-cost-of-living.html      Essay 001
+  israel-cost-of-living.html            Essay 001
+  gaza-casualty-demographics.html       Essay 002
 assets/
-  styles.css                      design tokens + all styling
-  data.js                         every number on the site
-  charts.js                       SVG chart renderers
-vercel.json                       cache headers
+  styles.css                            design tokens + all styling
+  data.js                               OECD income and price numbers
+  gaza-data.js                          GENERATED — casualty and population counts
+  charts.js                             SVG chart renderers
+analysis/
+  gaza-casualty-demographics.ipynb      the notebook that writes gaza-data.js
+  gaza-casualty-demographics.html       an executed render of it, for readers
+  data/                                 small public reference datasets
+vercel.json                             cache headers
 ```
+
+Some data files are **generated**, not typed. `assets/gaza-data.js` is written by
+`analysis/gaza-casualty-demographics.ipynb` and carries a `GENERATED FILE` header saying so;
+edit the notebook and re-run it, never the file. See [`analysis/README.md`](analysis/README.md)
+for how to run it and what the raw inputs are.
+
+The Gaza Ministry of Health's named casualty lists are not redistributed in this repository —
+`gaza data/` is gitignored. Download them from
+[gazadeaths.org](https://www.gazadeaths.org/en/sources) to reproduce that essay.
 
 Three files carry the whole design system:
 
@@ -97,6 +112,17 @@ indexed to the United States at 100.
 Qualitative claims about trade barriers, product-market regulation, food-retail
 concentration and administrative burden come from the OECD *Economic Survey of
 Israel, 2025*.
+
+### Essay 002 — Gaza casualty demography
+
+Casualty counts are the Gaza Ministry of Health's own published named lists, archived at
+[gazadeaths.org](https://www.gazadeaths.org/en/sources). Ten files, nine distinct lists (two
+are byte-identical), January 2024 to July 2025.
+
+Population shares use Palestinian Central Bureau of Statistics figures for the Gaza Strip,
+reference year 2023, published as the OCHA/UNFPA Common Operational Dataset
+[`cod-ps-pse`](https://data.humdata.org/dataset/cod-ps-pse), collapsed from 17 five-year bands
+to the 14 the casualty counts use so that numerator and denominator carry identical cut-offs.
 
 Corrections welcome — open an issue.
 

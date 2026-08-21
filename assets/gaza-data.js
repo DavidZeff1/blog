@@ -1,47 +1,33 @@
 /* ------------------------------------------------------------------
-   gaza-data.js — counts behind the casualty-demography essay.
+   gaza-data.js - counts behind the casualty-demography essay.
 
-   NOTHING IS FILLED IN. The charts will not draw until it is, and they
-   will say so on the page rather than showing an empty frame. Every
-   number below has to be computed from the Gaza Health Ministry's
-   published lists and from a published population baseline. Do not
-   estimate them, and do not let anyone else estimate them for you --
-   the entire argument of the essay is that these particular numbers
-   are checkable, so they have to actually be the numbers.
-
-   HOW TO FILL IT IN
-   -----------------
-   deaths.m / deaths.f
-     Count of named records per age band and sex, from ONE list. Say
-     which list in `source` -- do not merge lists, because they revise
-     and overlap. Age is (date of list) minus (date of birth). Records
-     with a missing or unparseable DOB or sex go in `excluded`, and
-     that number gets printed in the chart footnote.
-
-   pop.m / pop.f
-     Population by the SAME bands and the SAME sex split, from a
-     published projection (PCBS or equivalent) for a stated date. Name
-     it in `popSource`. The bands must match exactly or every share in
-     the essay is wrong.
-
-   Both arrays must be the same length as `bands`, in the same order.
-   Set `loaded: true` only once all four arrays are real.
+   GENERATED FILE. Do not hand-edit.
+   Produced by analysis/gaza-casualty-demographics.ipynb; re-run that
+   notebook to regenerate. Every number below is a count, not an
+   estimate: `deaths` tallies named records in ONE published Gaza MoH
+   list, `pop` is a published PCBS population figure. The age bands of
+   the two match exactly, which is what makes the shares comparable.
    ------------------------------------------------------------------ */
 
 const GAZA = {
-  loaded: false,
+  loaded: true,
 
-  source:    '',   // e.g. 'Gaza MoH named list, 31 March 2025, n = 60,199'
-  popSource: '',   // e.g. 'PCBS projection, mid-2023'
+  source:    'Gaza MoH named list, 2025-07-31, n = 60,199',
+  popSource: 'PCBS Gaza Strip, 2023, via OCHA/UNFPA COD cod-ps-pse',
   excluded:  0,    // records dropped for missing/unparseable age or sex
 
   bands: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34',
           '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65+'],
 
-  deaths: { m: [], f: [] },
-  pop:    { m: [], f: [] }
+  deaths: {
+    m: [  2503,   2545,   3104,   4453,   4730,   4984,   5109,   3833,   2529,   1824,   1423,   1197,    965,   1791],
+    f: [  2241,   2277,   2154,   1832,   1579,   1704,   1619,   1170,    890,    775,    657,    638,    536,   1137]
+  },
+  pop: {
+    m: [171595, 145276, 141660, 120553,  98073,  97192,  87562,  64156,  49109,  41317,  31260,  28753,  20588,  30832],
+    f: [165462, 139182, 135532, 115384,  93854,  94657,  85986,  64356,  49977,  41214,  30876,  27135,  19882,  35121]
+  }
 };
-
 /* --- derived, computed only when the counts are actually present --- */
 GAZA.ready = () => GAZA.loaded
   && [GAZA.deaths.m, GAZA.deaths.f, GAZA.pop.m, GAZA.pop.f]
@@ -67,6 +53,12 @@ GAZA.share = (which, sex) => {
    drawing a fabricated point. */
 GAZA.sexRatio = () =>
   GAZA.bands.map((_, i) => GAZA.deaths.f[i] ? GAZA.deaths.m[i] / GAZA.deaths.f[i] : null);
+
+/* The same ratio in the living population -- the honest reference line.
+   This is what the death ratio would sit on at every age if nothing about
+   being male or female changed your chance of being killed. */
+GAZA.popSexRatio = () =>
+  GAZA.bands.map((_, i) => GAZA.pop.f[i] ? GAZA.pop.m[i] / GAZA.pop.f[i] : null);
 
 /* Deaths a band would hold if the dead were drawn at random from the
    living, against the deaths it actually holds. */

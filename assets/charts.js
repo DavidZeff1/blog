@@ -312,9 +312,13 @@ function sexRatioChart(el) {
     g += `<line x1="${L}" y1="${sy(v)}" x2="${W - R}" y2="${sy(v)}" class="rule-h"/>`
        + t(L - 7, sy(v) + 3.5, v.toFixed(0), 'axis-lab', 'end');
 
-  /* the natural birth ratio: what a flat, indiscriminate line would sit on */
-  g += `<line x1="${L}" y1="${sy(1.05)}" x2="${W - R}" y2="${sy(1.05)}" class="rule-avg"/>`
-     + t(L + 6, sy(1.05) - 6, 'natural birth ratio 1.05', 'axis-lab', 'start');
+  /* The same ratio in the living population -- what a flat, indiscriminate
+     line would sit on. Drawn from the data rather than assumed, so the
+     reference cannot drift away from the counts it is compared against. */
+  const pr = GAZA.popSexRatio();
+  g += `<path d="${pr.map((v, i) => (i ? 'L' : 'M') + sx(i) + ' ' + sy(v)).join(' ')}"
+         class="rule-avg" fill="none"/>`
+     + t(L + 6, sy(pr[0]) + 14, 'ratio in the living population', 'axis-lab', 'start');
 
   let d = '', open = false;
   r.forEach((v, i) => {
@@ -339,8 +343,11 @@ function sexRatioChart(el) {
 function expectedChart(el) {
   const W = Math.max(el.clientWidth, 280);
   if (!dataReady(el, 'Population and casualty counts')) return;
+  /* Same four groups as the notebook figure, in the same order, so the
+     essay and the analysis show the reader the same comparison. */
   const GROUPS = [
     { lab: 'Under 15',      from: 0, to: 2,  sex: null },
+    { lab: 'Males 15-59',   from: 3, to: 11, sex: 'm' },
     { lab: 'Males 25-54',   from: 5, to: 10, sex: 'm' },
     { lab: 'Females 25-54', from: 5, to: 10, sex: 'f' }
   ].map(q => ({ ...q, ...GAZA.expected(q.from, q.to, q.sex) }));
@@ -352,7 +359,7 @@ function expectedChart(el) {
 
   let g = `<rect x="${L}" y="26" width="9" height="9" class="bar-exp"/>`
         + t(L + 13, 34, 'expected if deaths were drawn at random', 'axis-lab', 'start')
-        + `<rect x="${L}" y="40" width="9" height="9" class="bar"/>`
+        + `<rect x="${L}" y="40" width="9" height="9" class="bar-act"/>`
         + t(L + 13, 48, 'actual', 'axis-lab', 'start');
 
   GROUPS.forEach((q, i) => {
@@ -360,7 +367,7 @@ function expectedChart(el) {
     g += t(L - 9, y + 22, q.lab, 'bar-name', 'end')
        + `<rect x="${L}" y="${y}" width="${bw(q.expected)}" height="17" class="bar-exp"/>`
        + t(L + bw(q.expected) + 6, y + 13, Math.round(q.expected).toLocaleString(), 'bar-val', 'start')
-       + `<rect x="${L}" y="${y + 21}" width="${bw(q.actual)}" height="17" class="bar"/>`
+       + `<rect x="${L}" y="${y + 21}" width="${bw(q.actual)}" height="17" class="bar-act"/>`
        + t(L + bw(q.actual) + 6, y + 34, Math.round(q.actual).toLocaleString(), 'bar-val', 'start')
        + t(L, y + 54, `${q.popShare.toFixed(1)}% of the population`, 'axis-lab', 'start');
   });

@@ -89,6 +89,20 @@ figure > div { border: 1px solid var(--line); padding: 14px 12px; }
 figcaption { font-family: var(--sans); font-size: 12px; line-height: 1.5; color: var(--muted);
              margin-top: 8px; }
 
+/* --- data tables: numbers right-aligned and tabular so columns line up --- */
+.data { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 14px; }
+.data th, .data td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: right; }
+.data th { font-size: 11px; letter-spacing: .6px; text-transform: uppercase; color: var(--muted);
+           font-weight: bold; vertical-align: bottom; }
+.data th:first-child, .data td:first-child { text-align: left; }
+.data td:not(:first-child) { font-variant-numeric: tabular-nums; }
+.data td:first-child { white-space: nowrap; }
+.data tbody tr:last-child td { border-bottom: 2px solid var(--text); font-weight: bold;
+                               color: var(--text); }
+/* Narrow screens: let the table scroll inside its own box rather than
+   pushing the whole page sideways. */
+.scroller { overflow-x: auto; margin: 28px 0; }
+
 /* --- story cards: each one a bordered box, thumbnails all the same size --- */
 .posts { display: grid; gap: 14px; list-style: none; padding: 0; margin: 0 0 30px; }
 .card { display: flex; align-items: flex-start; gap: 14px; margin: 0; padding: 14px;
@@ -146,7 +160,10 @@ figcaption { font-family: var(--sans); font-size: 12px; line-height: 1.5; color:
 .pyr-pop { fill: #d9d9d9; }
 .pyr-death { fill: var(--red); }
 .ratio-line { stroke: var(--blue); stroke-width: 2.2; }
-.bar-exp { fill: var(--grey); }
+.bar-exp  { fill: var(--grey); }
+/* In the casualty charts red always means "the dead", so the actual bars
+   match the pyramid rather than taking the default series blue. */
+.bar-act  { fill: var(--red); }
 .chart-missing { margin: 0; padding: 22px 18px; text-align: center;
                  font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--muted); }
 .chart-missing b { display: block; color: var(--red); margin-bottom: 4px; }
