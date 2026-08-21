@@ -97,9 +97,9 @@ neutral grotesque that renders the same everywhere.
 
 ## Regenerating the author photo crops
 
-`assets/portrait.jpg` and `assets/avatar.jpg` are derived from `profile.jpg` at the repository
-root — a camera original far too large to serve. Both crops strip EXIF, re-encode progressive
-and land under 120 KB.
+`assets/portrait.jpg` and `assets/og-about.jpg` are derived from `profile.jpg` at the
+repository root — a camera original far too large to serve. Both strip EXIF, re-encode
+progressive and land under 130 KB.
 
 ```python
 from PIL import Image
@@ -109,16 +109,14 @@ def save(im, path, size, q=82):
     im = im.copy(); im.thumbnail(size, Image.LANCZOS)
     im.convert("RGB").save(path, "JPEG", quality=q, optimize=True, progressive=True)
 
-# 4:5 portrait for the About page, branches trimmed off the top
+# 4:5 portrait, branches trimmed off the top. Used at 215px on the home page and About.
 save(src.crop((0, 420, W, 420 + int(W * 5 / 4))), "assets/portrait.jpg", (640, 800))
-# square face crop for the round avatar
-save(src.crop((1764, 750, 4764, 3750)), "assets/avatar.jpg", (400, 400))
 # 1200x630 social card
 save(src.crop((0, 780, W, 780 + int(W * 630 / 1200))), "assets/og-about.jpg", (1200, 630), q=80)
 ```
 
-The avatar is displayed round with `object-position: 50% 28%`, which pulls the framing up onto
-the face — worth re-checking if the crop box moves.
+Keep the 4:5 framing wide enough to hold both the face and the dog — a tighter square crop
+was tried first and lost the dog entirely at display size.
 
 ---
 

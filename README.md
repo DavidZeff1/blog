@@ -34,7 +34,7 @@ assets/
   data.js                               GENERATED — OECD income and price numbers
   gaza-data.js                          GENERATED — casualty and population counts
   charts.js                             SVG chart renderers
-  portrait.jpg  avatar.jpg              author photo, cropped two ways
+  portrait.jpg                          author photo, cropped for the page
   og-*.png og-*.jpg                     social preview cards
 analysis/
   israel-cost-of-living.ipynb           the notebook that writes data.js
@@ -46,9 +46,9 @@ profile.jpg                             the original photo the two crops come fr
 vercel.json                             cache headers
 ```
 
-`assets/portrait.jpg` (4:5, About page) and `assets/avatar.jpg` (square, home page and
-elsewhere) are cropped and resized from `profile.jpg`, which is a 7 MB camera original and is
-**not** referenced by any page. Regenerate the crops with the snippet in
+`assets/portrait.jpg` (4:5, used on both the home page and About) and `assets/og-about.jpg`
+(the social card) are cropped and resized from `profile.jpg`, which is a 7 MB camera original
+and is **not** referenced by any page. Regenerate them with the snippet in
 [`analysis/README.md`](analysis/README.md) if the source photo changes.
 
 Both data files are **generated**, not typed. `assets/data.js` and `assets/gaza-data.js` are
