@@ -240,12 +240,144 @@ function budgetChart(el) {
     'essentials; after a 15 percent fall in prices, 3,500 shekels are left — a 75 percent increase.', g);
 }
 
+/* =================================================================
+   5-7. GAZA CASUALTY DEMOGRAPHY
+   These draw nothing until assets/gaza-data.js holds real counts.
+   An empty frame reads as "no deaths in this band"; a printed notice
+   reads as "not measured yet", which is the true state.
+   ================================================================= */
+function dataReady(el, what) {
+  if (typeof GAZA !== 'undefined' && GAZA.ready && GAZA.ready()) return true;
+  el.innerHTML = `<p class="chart-missing"><b>${esc(what)} not loaded.</b>
+    Fill in the counts in <code>assets/gaza-data.js</code> and set
+    <code>loaded: true</code>. Nothing is estimated for you.</p>`;
+  return false;
+}
+
+/* 5. Back-to-back pyramid: share of population vs share of the dead. */
+function pyramidChart(el) {
+  const W = Math.max(el.clientWidth, 280);
+  if (!dataReady(el, 'Population and casualty counts')) return;
+  const narrow = W < 520;
+  const n = GAZA.bands.length;
+  const row = narrow ? 19 : 23;
+  const padT = 58, padB = 32;
+  const H = padT + n * row + padB;
+  const gut = narrow ? 46 : 58;
+  const half = (W - gut) / 2;
+  const xL = half, xR = half + gut;
+
+  const dm = GAZA.share('deaths', 'm'), df = GAZA.share('deaths', 'f');
+  const pm = GAZA.share('pop', 'm'),    pf = GAZA.share('pop', 'f');
+  const max = Math.max(...dm, ...df, ...pm, ...pf) * 1.08 || 1;
+  const w = v => v / max * half;
+
+  let g = t(xL, padT - 34, 'MALE', 'axis-title', 'end')
+        + t(xR, padT - 34, 'FEMALE', 'axis-title', 'start')
+        + `<rect x="${xL - 96}" y="${padT - 24}" width="9" height="9" class="pyr-pop"/>`
+        + t(xL - 83, padT - 16, 'share of population', 'axis-lab', 'start')
+        + `<rect x="${xR + 4}" y="${padT - 24}" width="9" height="9" class="pyr-death"/>`
+        + t(xR + 17, padT - 16, 'share of the dead', 'axis-lab', 'start');
+
+  GAZA.bands.forEach((b, i) => {
+    const y = padT + i * row, hp = row - 4, hd = Math.round((row - 4) * .56);
+    const yd = y + (hp - hd) / 2;
+    g += `<rect x="${xL - w(pm[i])}" y="${y}" width="${w(pm[i])}" height="${hp}" class="pyr-pop"/>`
+       + `<rect x="${xR}" y="${y}" width="${w(pf[i])}" height="${hp}" class="pyr-pop"/>`
+       + `<rect x="${xL - w(dm[i])}" y="${yd}" width="${w(dm[i])}" height="${hd}" class="pyr-death"/>`
+       + `<rect x="${xR}" y="${yd}" width="${w(df[i])}" height="${hd}" class="pyr-death"/>`
+       + t(xL + gut / 2, y + hp / 2 + 3.5, b, 'axis-lab', 'middle');
+  });
+  g += t(xL, H - padB + 16, `${max.toFixed(0)}%`, 'axis-lab', 'start')
+     + t(xR, H - padB + 16, `${max.toFixed(0)}%`, 'axis-lab', 'end');
+
+  el.innerHTML = svgWrap(W, H,
+    'Population pyramid of Gaza compared with the age and sex distribution of named deaths.', g);
+}
+
+/* 6. Male deaths per female death, by age band. */
+function sexRatioChart(el) {
+  const W = Math.max(el.clientWidth, 280);
+  if (!dataReady(el, 'Casualty counts')) return;
+  const H = W < 520 ? 260 : 300;
+  const L = 42, R = 14, T = 26, B = 52;
+  const r = GAZA.sexRatio();
+  const top = Math.max(3.5, Math.ceil(Math.max(...r.filter(v => v !== null)) * 1.15));
+  const n = GAZA.bands.length;
+  const sx = i => L + (i + .5) * (W - L - R) / n;
+  const sy = v => T + (1 - v / top) * (H - T - B);
+
+  let g = '';
+  for (let v = 0; v <= top; v += 1)
+    g += `<line x1="${L}" y1="${sy(v)}" x2="${W - R}" y2="${sy(v)}" class="rule-h"/>`
+       + t(L - 7, sy(v) + 3.5, v.toFixed(0), 'axis-lab', 'end');
+
+  /* the natural birth ratio: what a flat, indiscriminate line would sit on */
+  g += `<line x1="${L}" y1="${sy(1.05)}" x2="${W - R}" y2="${sy(1.05)}" class="rule-avg"/>`
+     + t(L + 6, sy(1.05) - 6, 'natural birth ratio 1.05', 'axis-lab', 'start');
+
+  let d = '', open = false;
+  r.forEach((v, i) => {
+    if (v === null) { open = false; return; }
+    d += (open ? ' L' : ' M') + sx(i) + ' ' + sy(v); open = true;
+    g += `<circle cx="${sx(i)}" cy="${sy(v)}" r="3.2" class="dot"/>`;
+  });
+  g = `<path d="${d.trim()}" class="ratio-line" fill="none"/>` + g;
+
+  GAZA.bands.forEach((b, i) => {
+    if (i % (W < 520 ? 2 : 1) === 0) g += t(sx(i), H - B + 18, b, 'axis-lab', 'middle');
+  });
+  g += t(L, T - 10, 'MALE DEATHS PER FEMALE DEATH', 'axis-title')
+     + t(W - R, H - B + 38, 'AGE BAND →', 'axis-title', 'end');
+
+  el.innerHTML = svgWrap(W, H,
+    'Ratio of male to female named deaths by age band, against the natural birth ratio of 1.05.', g);
+}
+
+/* 7. Deaths a group would hold if the dead were drawn at random from
+      the living, against the deaths it actually holds. */
+function expectedChart(el) {
+  const W = Math.max(el.clientWidth, 280);
+  if (!dataReady(el, 'Population and casualty counts')) return;
+  const GROUPS = [
+    { lab: 'Under 15',      from: 0, to: 2,  sex: null },
+    { lab: 'Males 25-54',   from: 5, to: 10, sex: 'm' },
+    { lab: 'Females 25-54', from: 5, to: 10, sex: 'f' }
+  ].map(q => ({ ...q, ...GAZA.expected(q.from, q.to, q.sex) }));
+
+  const H = 74 + GROUPS.length * 62;
+  const L = W < 520 ? 96 : 118, R = 58;
+  const max = Math.max(...GROUPS.flatMap(q => [q.expected, q.actual])) * 1.06 || 1;
+  const bw = v => v / max * (W - L - R);
+
+  let g = `<rect x="${L}" y="26" width="9" height="9" class="bar-exp"/>`
+        + t(L + 13, 34, 'expected if deaths were drawn at random', 'axis-lab', 'start')
+        + `<rect x="${L}" y="40" width="9" height="9" class="bar"/>`
+        + t(L + 13, 48, 'actual', 'axis-lab', 'start');
+
+  GROUPS.forEach((q, i) => {
+    const y = 74 + i * 62;
+    g += t(L - 9, y + 22, q.lab, 'bar-name', 'end')
+       + `<rect x="${L}" y="${y}" width="${bw(q.expected)}" height="17" class="bar-exp"/>`
+       + t(L + bw(q.expected) + 6, y + 13, Math.round(q.expected).toLocaleString(), 'bar-val', 'start')
+       + `<rect x="${L}" y="${y + 21}" width="${bw(q.actual)}" height="17" class="bar"/>`
+       + t(L + bw(q.actual) + 6, y + 34, Math.round(q.actual).toLocaleString(), 'bar-val', 'start')
+       + t(L, y + 54, `${q.popShare.toFixed(1)}% of the population`, 'axis-lab', 'start');
+  });
+
+  el.innerHTML = svgWrap(W, H,
+    'Deaths expected in each group if the dead were a random draw from the living, against actual deaths.', g);
+}
+
 /* ---- mount + responsive redraw ---- */
 const MOUNTS = [
   ['[data-chart="slope"]',  slopeChart],
   ['[data-chart="prices"]', priceLevelChart],
   ['[data-chart="scatter"]', scatterChart],
-  ['[data-chart="budget"]', budgetChart]
+  ['[data-chart="budget"]', budgetChart],
+  ['[data-chart="pyramid"]', pyramidChart],
+  ['[data-chart="sexratio"]', sexRatioChart],
+  ['[data-chart="expected"]', expectedChart]
 ];
 
 function drawAll() {

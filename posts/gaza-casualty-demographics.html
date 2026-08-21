@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not Indiscriminate: What Hamas's Own Numbers Show — David Zeff</title>
+<meta name="description" content="The Gaza Health Ministry's named casualty lists carry an age and sex distribution that does not match Gaza's population. What that distribution can and cannot tell us.">
+<meta name="author" content="David Zeff">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Not Indiscriminate: What Hamas's Own Numbers Show">
+<meta property="og:description" content="The age and sex distribution of the named dead does not resemble the population it came from.">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the article</a>
+
+<header>
+  <a class="masthead" href="../">David Zeff</a>
+  <p class="tagline">Economics, public policy and the numbers underneath them</p>
+  <nav><a href="../">Essays</a><a href="../about.html">About</a></nav>
+</header>
+
+<main id="main">
+
+  <p class="kicker">Data</p>
+  <h1>Not Indiscriminate: What Hamas's Own Numbers Show</h1>
+  <p class="deck">The Gaza Health Ministry's named casualty lists carry an age and sex distribution
+    that does not match the population they came from.</p>
+  <p class="byline">By David Zeff</p>
+  <p class="meta"><span>21 August 2026</span><span>6 min read</span><span>Gaza MoH named lists</span></p>
+
+  <p>"Genocide." "Indiscriminate." "Disproportionate." We've been hearing these words for a long
+    time now. Wikipedia describes the war in Gaza as "a genocide, agreed upon by most scholars."
+    Sounds damning, doesn't it?</p>
+
+  <p>To back up these accusations, Amnesty International, South Africa, and other supposedly
+    "impartial" parties say they have rigorous, substantial evidence. What is that evidence?
+    Several unrelated witnesses, all of whom claim there were no military targets in the area that
+    was struck. How would they know? Did all of these very unbiased—and certainly not hostile to
+    Israel—witnesses happen to live in that exact apartment and know for a fact that there were no
+    military targets inside? Very convincing.</p>
+
+  <p>So here is my own evidence—drawn from Hamas's own numbers, the very numbers used to accuse us.</p>
+
+  <p>I downloaded all ten lists the Gaza Health Ministry has published since January 2024 and ran
+    the distributions myself. The most recent contains 60,199 named records, each with a national
+    ID number, a date of birth, and a sex.</p>
+
+  <p>If bombs fell on a population without regard for who was beneath them, the dead would be a
+    random sample of the living—and a random sample resembles the population it came from. Gaza's
+    dead do not resemble Gaza.</p>
+
+  <figure>
+    <p><b>The dead are not a cross-section of the living.</b> Each bar pair is one age band. Grey is
+      that band's share of Gaza's population; red is its share of the named dead. If the killing
+      were a random draw, the red bars would sit on top of the grey ones.</p>
+    <div data-chart="pyramid"></div>
+    <figcaption>Source: Gaza Health Ministry named casualty list; population baseline from the
+      Palestinian Central Bureau of Statistics. Exact list date, record count and excluded records
+      are recorded in the dataset file in this site's repository.</figcaption>
+  </figure>
+
+  <p>Children are 44 percent of the population, but only 25 percent of the list. Men aged 25 to 54
+    are 14 percent of the population, but 33 percent of the list. Had those 60,199 deaths been
+    drawn at random, roughly 26,500 of them would be children. Fewer than 15,000 are.</p>
+
+  <figure>
+    <p><b>Expected against actual.</b> How many deaths each group would hold if the dead were drawn
+      at random from the living, against how many it actually holds.</p>
+    <div data-chart="expected"></div>
+    <figcaption>Groups are whole five-year bands so that the population denominator and the casualty
+      numerator use identical age cut-offs. Source: Gaza Health Ministry named list; PCBS population
+      projection.</figcaption>
+  </figure>
+
+  <p>Consider the sex ratio. A boy and a girl of the same age in Gaza live in the same building and
+    shelter in the same room. A collapsing structure does not sort them, and the birth sex
+    ratio—about 1.05 boys per girl—is among the most stable figures in demography. Under
+    indiscriminate killing, the ratio of male to female deaths should be flat at 1.05 at every age.
+    In the Ministry's own data, it sits near 1.1 through early childhood, then climbs steadily from
+    around age ten to above 3.0 in the twenties. Add to this the fact that Hamas actively recruits
+    children into its ranks—a war crime in its own right, by the way.</p>
+
+  <figure>
+    <p><b>The ratio climbs with age.</b> Male deaths per female death in each age band. The dashed
+      line is the natural birth ratio of 1.05, which is where a flat, indiscriminate pattern would
+      sit.</p>
+    <div data-chart="sexratio"></div>
+    <figcaption>Bands with no recorded female deaths are left out rather than plotted, so the line
+      breaks instead of implying a ratio that cannot be computed. Source: Gaza Health Ministry
+      named list.</figcaption>
+  </figure>
+
+  <p>I'm not claiming every military-aged male is a militant. But the simple fact remains: if the
+    bombing were truly systemic and indiscriminate, the data would show a very specific pattern.
+    Put gender and age bins on the x-axis and death count on the y-axis, and the chart should
+    closely mirror the same chart with population count on the y-axis instead. Yet, by Hamas's own
+    numbers, these two charts are night and day from each other.</p>
+
+  <p>That makes the case, beyond any reasonable doubt, that Israel's actions could not have been
+    indiscriminate. And if they were not indiscriminate, it follows that there could not have been
+    any intent to destroy the people of Gaza, in whole or in part.</p>
+
+  <aside>
+    <p><b>Sources and method.</b> All figures are computed directly from the Gaza Health Ministry's
+      published named casualty lists, archived at
+      <a href="https://www.gazadeaths.org/en/sources">gazadeaths.org</a>. Population shares are
+      computed against a published Palestinian Central Bureau of Statistics projection, using the
+      same five-year age bands as the casualty counts so that the numerator and denominator carry
+      identical cut-offs.</p>
+    <p>The counts behind every chart on this page are in
+      <code>assets/gaza-data.js</code> in <a href="https://github.com/DavidZeff1">the public
+      repository</a>, along with the number of records excluded for a missing or unparseable date
+      of birth or sex. Anyone can recompute the arithmetic.</p>
+  </aside>
+
+  <p><a href="../">← All essays</a></p>
+
+</main>
+
+<footer>
+  <span>© 2026 David Zeff</span>
+  <span>
+    <a href="mailto:dpzeff@gmail.com">Email</a>
+    <a href="https://github.com/DavidZeff1">GitHub</a>
+    <a href="https://linkedin.com/in/david-zeff-computerscience141592">LinkedIn</a>
+  </span>
+</footer>
+
+<script src="../assets/gaza-data.js"></script>
+<script src="../assets/charts.js"></script>
+</body>
+</html>

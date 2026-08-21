@@ -144,6 +144,16 @@ figcaption { font-family: var(--sans); font-size: 12px; line-height: 1.5; color:
 .bud-num { fill: #fff; font-size: 12px; font-weight: bold; }
 .bud-foot { fill: var(--green); font-size: 11px; font-weight: bold; }
 
+/* casualty-demography charts */
+.pyr-pop { fill: #d9d9d9; }
+.pyr-death { fill: var(--red); }
+.ratio-line { stroke: var(--blue); stroke-width: 2.2; }
+.bar-exp { fill: var(--grey); }
+.chart-missing { margin: 0; padding: 22px 18px; text-align: center;
+                 font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--muted); }
+.chart-missing b { display: block; color: var(--red); margin-bottom: 4px; }
+.chart-missing code { font-size: 13px; color: var(--text); }
+
 /* --- skip link --- */
 .skip { position: absolute; left: -9999px; }
 .skip:focus { left: 8px; top: 8px; background: var(--text); color: #fff; padding: 6px 10px; }
