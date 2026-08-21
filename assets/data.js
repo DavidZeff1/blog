@@ -1,14 +1,21 @@
 /* ------------------------------------------------------------------
-   data.js — every number used on this site lives here.
-   Source: IMF World Economic Outlook, April 2026 (2026 projections),
-   OECD member countries only (38).
+   data.js - every OECD number used on this site lives here.
+
+   GENERATED FILE. Do not hand-edit.
+   Produced by analysis/israel-cost-of-living.ipynb, which pulls the
+   series from the IMF DataMapper API and asserts that every figure
+   quoted in the essay still reproduces. Re-run that notebook to
+   regenerate.
+
+   Source: IMF World Economic Outlook, 2026 projections, indicators
+   NGDPDPC and PPPPC, OECD member countries only (38).
 
    nominal = GDP per capita, current US$
    ppp     = GDP per capita, current international $ (PPP)
 
-   Price level is DERIVED: nominal / ppp * 100.
-   That ratio is the implied PPP conversion factor over the market
-   exchange rate — i.e. the comparative price level, US = 100.
+   Price level is DERIVED below: nominal / ppp * 100. That ratio is the
+   implied PPP conversion factor over the market exchange rate -- i.e.
+   the comparative price level, US = 100.
    ------------------------------------------------------------------ */
 
 const OECD = {
@@ -51,7 +58,6 @@ const OECD = {
   "Mexico":         [ 15779,  26643],
   "Colombia":       [ 10104,  23576]
 };
-
 /* ---- derived series, computed once at load ---- */
 
 const NAMES = Object.keys(OECD);

@@ -73,27 +73,37 @@ SKIN = """<!-- site-skin -->
 </style>
 """
 
-BAR = """<div class="site-bar">
-  <b><a href="../">David Zeff</a></b>
-  <a href="../posts/gaza-casualty-demographics.html">&larr; Back to the essay</a>
-</div>
-"""
+# Each notebook belongs to one essay; the bar links back to it by name.
+ESSAY = {
+    "gaza-casualty-demographics": "Not Indiscriminate: What Hamas's Own Numbers Show",
+    "israel-cost-of-living": "Israel is a rich country that is too expensive to live in",
+}
+
+
+def bar_for(stem: str) -> str:
+    if stem in ESSAY:
+        back = f'<a href="../posts/{stem}.html">&larr; Back to the essay</a>'
+    else:
+        back = '<a href="../">&larr; Back to the essays</a>'
+    return f'<div class="site-bar">\n  <b><a href="../">David Zeff</a></b>\n  {back}\n</div>\n'
 
 
 def skin(path: Path) -> None:
     html = path.read_text()
+    bar = bar_for(path.stem)
     if MARKER in html:
+        # strip whatever this script added last time, so re-running is a no-op
         html = re.sub(r"<!-- site-skin -->.*?</style>\n?", "", html, flags=re.S)
-        html = html.replace(BAR, "")
+        html = re.sub(r'<div class="site-bar">.*?</div>\n?', "", html, flags=re.S, count=1)
     head_end = html.index("</head>")
     html = html[:head_end] + SKIN + html[head_end:]
     body_open = re.search(r"<body[^>]*>", html)
-    html = html[:body_open.end()] + "\n" + BAR + html[body_open.end():]
+    html = html[:body_open.end()] + "\n" + bar + html[body_open.end():]
     path.write_text(html)
     print(f"skinned {path.name} ({path.stat().st_size:,} bytes)")
 
 
 if __name__ == "__main__":
-    targets = sys.argv[1:] or ["gaza-casualty-demographics.html"]
+    targets = sys.argv[1:] or sorted(str(p) for p in Path(".").glob("*.html"))
     for t in targets:
         skin(Path(t))

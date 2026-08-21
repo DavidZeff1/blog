@@ -6,10 +6,42 @@ published charts read, so the essay and the analysis cannot drift apart.
 
 | Notebook | Produces | Essay |
 |---|---|---|
+| `israel-cost-of-living.ipynb` | `assets/data.js` | [Israel is a rich country that is too expensive to live in](../posts/israel-cost-of-living.html) |
 | `gaza-casualty-demographics.ipynb` | `assets/gaza-data.js` | [Not Indiscriminate: What Hamas's Own Numbers Show](../posts/gaza-casualty-demographics.html) |
 
 A rendered, already-executed copy of each notebook sits beside it as `.html`, so the analysis is
 readable on the live site without running anything.
+
+---
+
+## Running the OECD notebook
+
+Nothing to download by hand. It pulls what it needs from two public APIs, neither of which
+needs a key:
+
+| Source | Endpoint | Used for |
+|---|---|---|
+| IMF DataMapper | `imf.org/external/datamapper/api/v1/{NGDPDPC,PPPPC,NGDPD}` | GDP per capita at market rates and at PPP, every economy, 1980–2031 |
+| World Bank | `api.worldbank.org/v2/…/{PA.NUS.PPP,PA.NUS.FCRF}` | an independent ICP-based price level, for the cross-check |
+
+```bash
+pip install jupyter pandas numpy matplotlib
+cd analysis
+jupyter lab israel-cost-of-living.ipynb
+```
+
+Responses are cached to `data/` on first run and **the cached copies are committed**. That is
+deliberate: both endpoints are live and will return a different vintage next quarter, and a
+moving API is not a citation. To pull a fresh vintage on purpose, delete `data/imf-weo-*.json`
+and `data/worldbank-*.json` and re-run — the assertion cell will then tell you exactly which
+published figures moved.
+
+That assertion cell is the point of the notebook. Every number quoted in the essay — the two
+GDP figures, both ranks, the fifteen-place fall, the price level, the OECD average, the
+$720bn — is re-derived and `assert`ed. The essay cannot drift away from its source without
+this notebook failing.
+
+If an assertion fails, do not edit the assertion. Edit the essay.
 
 ---
 
@@ -44,9 +76,9 @@ wrote reproduces the headline figures.
 To regenerate the rendered HTML as well:
 
 ```bash
-jupyter nbconvert --to notebook --execute --inplace gaza-casualty-demographics.ipynb
-jupyter nbconvert --to html --embed-images gaza-casualty-demographics.ipynb
-python3 skin_notebook_html.py gaza-casualty-demographics.html
+jupyter nbconvert --to notebook --execute --inplace <notebook>.ipynb
+jupyter nbconvert --to html --embed-images <notebook>.ipynb
+python3 skin_notebook_html.py          # no args: skins every .html beside it
 ```
 
 That last step matters. nbconvert ships its own white-page stylesheet, and this notebook is
@@ -60,6 +92,33 @@ They deliberately do **not** ask for Roboto: whether a machine has a usable upri
 installed varies, and matplotlib will happily match an italic-only install and render every
 figure in italics. The site's pages get real Roboto from Google Fonts; the figures use a
 neutral grotesque that renders the same everywhere.
+
+---
+
+## Regenerating the author photo crops
+
+`assets/portrait.jpg` and `assets/avatar.jpg` are derived from `profile.jpg` at the repository
+root — a camera original far too large to serve. Both crops strip EXIF, re-encode progressive
+and land under 120 KB.
+
+```python
+from PIL import Image
+src = Image.open("profile.jpg"); W, H = src.size
+
+def save(im, path, size, q=82):
+    im = im.copy(); im.thumbnail(size, Image.LANCZOS)
+    im.convert("RGB").save(path, "JPEG", quality=q, optimize=True, progressive=True)
+
+# 4:5 portrait for the About page, branches trimmed off the top
+save(src.crop((0, 420, W, 420 + int(W * 5 / 4))), "assets/portrait.jpg", (640, 800))
+# square face crop for the round avatar
+save(src.crop((1764, 750, 4764, 3750)), "assets/avatar.jpg", (400, 400))
+# 1200x630 social card
+save(src.crop((0, 780, W, 780 + int(W * 630 / 1200))), "assets/og-about.jpg", (1200, 630), q=80)
+```
+
+The avatar is displayed round with `object-position: 50% 28%`, which pulls the framing up onto
+the face — worth re-checking if the crop box moves.
 
 ---
 
