@@ -324,7 +324,9 @@ function sexRatioChart(el) {
   r.forEach((v, i) => {
     if (v === null) { open = false; return; }
     d += (open ? ' L' : ' M') + sx(i) + ' ' + sy(v); open = true;
-    g += `<circle cx="${sx(i)}" cy="${sy(v)}" r="3.2" class="dot"/>`;
+    /* ratio-dot so the markers take the line's colour, not the generic
+       series blue that the scatter's dots use. */
+    g += `<circle cx="${sx(i)}" cy="${sy(v)}" r="3.2" class="dot ratio-dot"/>`;
   });
   g = `<path d="${d.trim()}" class="ratio-line" fill="none"/>` + g;
 

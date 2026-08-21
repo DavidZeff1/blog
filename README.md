@@ -1,6 +1,8 @@
 # david-zeff-blog
 
-Essays on economics, policy and data. Static HTML, no build step, no dependencies.
+Essays on economics, policy and data. Static HTML, no build step, no JavaScript dependencies.
+The one external request is the webfonts (Roboto and Roboto Slab, from Google Fonts); the page
+falls back to Helvetica and Georgia if they don't load.
 
 **Live:** _(add your Vercel URL here once deployed)_
 
@@ -56,9 +58,34 @@ Three files carry the whole design system:
 - **`data.js`** — the dataset. Nominal and PPP GDP per capita for all 38 OECD members.
   Rankings, price levels and the OECD average are *derived* at load time, never typed
   in by hand, so they cannot drift out of sync with the source numbers.
-- **`charts.js`** — four chart functions, plain SVG, no library. Each one measures its
+- **`charts.js`** — seven chart functions, plain SVG, no library. Each one measures its
   container and re-renders on resize, so one SVG unit is always one CSS pixel and labels
   stay legible from 320px up.
+
+### The palette
+
+Navy ink on cream paper, marigold for accents. Roboto Slab sets the headlines, Roboto does
+the reading and the chart labels; both come from Google Fonts, which is the site's only
+external request.
+
+```
+--paper  #FCF5E4   page          --navy   #12305C   ink
+--card   #FFFBF0   charts, cards --muted  #5C6779   captions, axes
+--panel  #F5ECD6   asides        --line   #E5DAC0   rules
+--marigold #F2C230 masthead rule, key-number block, kicker chips
+```
+
+Chart series, in this order: `--blue #2A6DB0`, `--amber #C0810C`, `--brick #BE3C2C`,
+`--purple #8A57B4`, `--teal #068A79`. Two more do a different job — `--sand #C0AE86` is the
+*reference* series (the population baseline, the unnamed OECD countries) and `--mark #1E4A85`
+is the single highlighted one it gets compared against.
+
+None of that was picked by eye. The five series pass a colour-blind separation, chroma and
+contrast check as an **adjacent** sequence, which is why the stacked household bar runs in
+that order — reordering it puts two confusable hues side by side. Every text pair clears WCAG
+AA: navy on cream 12.1:1, navy on marigold 7.8:1, links 4.9:1. Marigold never carries small
+type; it is a fill behind navy, never the type itself. The two deeper steps
+(`--amber-deep`, `--teal-deep`) exist only where a white label sits inside the fill.
 
 ### Checking the arithmetic
 
@@ -77,16 +104,18 @@ OECD_AVG_PRICE_LEVEL         // 77.7
 ## Adding an essay
 
 1. Copy `posts/israel-cost-of-living.html` to `posts/your-slug.html`.
-2. Replace the content inside `<div class="prose">`. Update `<title>`, the meta
-   description, and the `og:` tags.
-3. Add an entry to the `.postlist` in `index.html` and bump the essay number.
-4. If it needs charts, add the data to `data.js`, write a render function in
-   `charts.js`, register it in the `MOUNTS` array, and drop a
+2. Replace the content inside `<main>`. Update `<title>`, the meta description, the `og:`
+   tags, and keep the Google Fonts `<link>`s in the head.
+3. Add a `.card` to the `.posts` list in `index.html`.
+4. If it needs charts, add the data to `data.js` (or a new data file), write a render
+   function in `charts.js`, register it in the `MOUNTS` array, and drop a
    `<div data-chart="yourname"></div>` where you want it.
 
-Useful classes already available: `.lede` (drop cap), `.pull` (pull quote),
-`.note` (sourcing / caveat box), `.keylist` (the key-numbers strip),
-`.figure--wide` (breaks out of the reading column), `em.term` (defined term).
+Classes already available: `.kicker` (the marigold section chip), `.deck` (standfirst),
+`.byline`, `.meta` (dateline strip), `<dl>` with `<div>` children (the marigold key-numbers
+block, `.hi` on a cell to deepen it), `<figure>` (chart in a card, breaks out of the reading
+column above 700px), `<aside>` (sourcing / caveat panel), `blockquote` (pull quote), and
+`.data` inside `.scroller` (a table that scrolls itself instead of the page).
 
 ---
 

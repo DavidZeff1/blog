@@ -45,8 +45,21 @@ To regenerate the rendered HTML as well:
 
 ```bash
 jupyter nbconvert --to notebook --execute --inplace gaza-casualty-demographics.ipynb
-jupyter nbconvert --to html --embed-images gaza-casualty-demographics.html
+jupyter nbconvert --to html --embed-images gaza-casualty-demographics.ipynb
+python3 skin_notebook_html.py gaza-casualty-demographics.html
 ```
+
+That last step matters. nbconvert ships its own white-page stylesheet, and this notebook is
+linked straight from an essay — landing on it should not feel like leaving the site.
+`skin_notebook_html.py` injects the site's webfonts, the cream/navy/marigold palette and a
+link back. It strips any skin it already applied before re-applying, so running it twice is
+harmless.
+
+The figures inside the notebook use the same palette, defined at the top of the setup cell.
+They deliberately do **not** ask for Roboto: whether a machine has a usable upright Roboto
+installed varies, and matplotlib will happily match an italic-only install and render every
+figure in italics. The site's pages get real Roboto from Google Fonts; the figures use a
+neutral grotesque that renders the same everywhere.
 
 ---
 
