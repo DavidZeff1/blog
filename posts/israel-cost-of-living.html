@@ -1,357 +1,574 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Israel Is a Rich Country That Is Too Expensive to Live In — David Zeff</title>
-<meta name="description" content="Israel is 11th of 38 OECD countries by income per person and 26th once you adjust for prices. No one else in the OECD falls that far. Where the gap comes from, and what would close it.">
-<meta name="author" content="David Zeff">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Israel Is a Rich Country That Is Too Expensive to Live In">
-<meta property="og:description" content="Israel drops fifteen places in the OECD when you adjust income for prices. Nobody else drops that far.">
-<meta property="og:image" content="/assets/og-cost-of-living.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&family=Roboto+Slab:wght@700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/styles.css">
-</head>
-<body>
-<a class="skip" href="#main">Skip to the article</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Israel Is a Rich Country That Is Too Expensive to Live In — David Zeff
+    </title>
+    <meta
+      name="description"
+      content="Israel is 11th of 38 OECD countries by income per person and 26th once you adjust for prices. No one else in the OECD falls that far. Where the gap comes from, and what would close it."
+    />
+    <meta name="author" content="David Zeff" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Israel Is a Rich Country That Is Too Expensive to Live In"
+    />
+    <meta
+      property="og:description"
+      content="Israel drops fifteen places in the OECD when you adjust income for prices. Nobody else drops that far."
+    />
+    <meta property="og:image" content="/assets/og-cost-of-living.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&family=Roboto+Slab:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to the article</a>
 
-<header>
-  <a class="masthead" href="../">David Zeff</a>
-  <p class="tagline">Economics, public policy and the numbers underneath them</p>
-  <nav><a href="../">Essays</a><a href="../about.html">About</a></nav>
-</header>
+    <header>
+      <a class="masthead" href="../">David Zeff</a>
+      <p class="tagline">
+        Economics, public policy and the numbers underneath them
+      </p>
+      <nav><a href="../">Essays</a><a href="../about.html">About</a></nav>
+    </header>
 
-<main id="main">
+    <main id="main">
+      <p class="kicker">Economics</p>
+      <h1>Israel is a rich country that is too expensive to live in</h1>
+      <p class="deck">
+        By income per person, Israel ranks 11th out of the 38 OECD countries.
+        Adjust that income for what it actually buys here and we're 26th. Nobody
+        else in the OECD falls that far.
+      </p>
+      <p class="byline">By David Zeff</p>
+      <p class="meta">
+        <span>20 August 2026</span><span>12 min read</span
+        ><span>IMF WEO April 2026</span>
+      </p>
 
-  <p class="kicker">Economics</p>
-  <h1>Israel is a rich country that is too expensive to live in</h1>
-  <p class="deck">By income per person, Israel ranks 11th out of the 38 OECD countries. Adjust
-    that income for what it actually buys here and we're 26th. Nobody else in the OECD falls
-    that far.</p>
-  <p class="byline">By David Zeff</p>
-  <p class="meta"><span>20 August 2026</span><span>12 min read</span><span>IMF WEO April 2026</span></p>
+      <p>
+        The IMF expects Israel's economy to produce around $720 billion this
+        year. Split that across the population and it comes to roughly $69,800 a
+        head, which puts us ahead of Austria, Germany and the UK. I work with
+        budgets for a living, so I look at numbers like this fairly often, and
+        this one has bothered me for years. It doesn't match anything I see at
+        the supermarket.
+      </p>
 
-  <p>The IMF expects Israel's economy to produce around $720 billion this year. Split that across
-    the population and it comes to roughly $69,800 a head, which puts us ahead of Austria, Germany
-    and the UK. I work with budgets for a living, so I look at numbers like this fairly often, and
-    this one has bothered me for years. It doesn't match anything I see at the supermarket.</p>
+      <p>
+        Most people I know would laugh at that figure. They'd be half right. The
+        number is accurate — it just doesn't describe their week. We earn like a
+        rich country and we pay like an expensive one, and a lot of what this
+        economy produces goes straight back out on rent, food, getting to work
+        and the general cost of reaching the end of the month.
+      </p>
 
-  <p>Most people I know would laugh at that figure. They'd be half right. The number is accurate —
-    it just doesn't describe their week. We earn like a rich country and we pay like an expensive
-    one, and a lot of what this economy produces goes straight back out on rent, food, getting to
-    work and the general cost of reaching the end of the month.</p>
+      <p>
+        Every figure below was pulled from the IMF's own data API and checked by
+        <a href="../analysis/israel-cost-of-living.html"
+          >a Jupyter notebook you can read</a
+        >, which also writes the data file these charts draw from. It doesn't
+        just recompute the numbers — it <em>asserts</em> them, so if the IMF
+        revises its projections the notebook fails loudly instead of this page
+        quietly going stale.
+      </p>
 
-  <p>Every figure below was pulled from the IMF's own data API and checked by
-    <a href="../analysis/israel-cost-of-living.html">a Jupyter notebook you can read</a>, which
-    also writes the data file these charts draw from. It doesn't just recompute the numbers — it
-    <em>asserts</em> them, so if the IMF revises its projections the notebook fails loudly instead
-    of this page quietly going stale.</p>
+      <dl>
+        <div>
+          <dt>Nominal GDP per person</dt>
+          <dd>$69,804<small>11th of 38 OECD countries</small></dd>
+        </div>
+        <div class="hi">
+          <dt>Adjusted for prices</dt>
+          <dd>$59,095<small>26th of 38 — down fifteen places</small></dd>
+        </div>
+        <div class="hi">
+          <dt>Price level, US = 100</dt>
+          <dd>118<small>third highest in the OECD — 2026 projection</small></dd>
+        </div>
+        <div>
+          <dt>vs. OECD average</dt>
+          <dd>+52%<small>the OECD simple average is 78</small></dd>
+        </div>
+      </dl>
 
-  <dl>
-    <div><dt>Nominal GDP per person</dt><dd>$69,804<small>11th of 38 OECD countries</small></dd></div>
-    <div class="hi"><dt>Adjusted for prices</dt><dd>$59,095<small>26th of 38 — down fifteen places</small></dd></div>
-    <div class="hi"><dt>Price level, US = 100</dt><dd>118<small>third highest in the OECD — 2026 projection</small></dd></div>
-    <div><dt>vs. OECD average</dt><dd>+52%<small>the OECD simple average is 78</small></dd></div>
-  </dl>
+      <h2>The fifteen-place fall</h2>
 
-  <h2>The fifteen-place fall</h2>
+      <p>
+        You can rank a country's income two ways. Convert everything into
+        dollars at the market exchange rate, or convert it by what the money
+        buys at local prices. Most countries shift a few places between the two
+        lists. Israel drops fifteen.
+      </p>
 
-  <p>You can rank a country's income two ways. Convert everything into dollars at the market
-    exchange rate, or convert it by what the money buys at local prices. Most countries shift a
-    few places between the two lists. Israel drops fifteen.</p>
+      <p>
+        In market dollars we're 11th of 38. By what those dollars buy, 26th.
+        Nothing about how much Israel produces changed between one column and
+        the other. Only the prices did.
+      </p>
 
-  <p>In market dollars we're 11th of 38. By what those dollars buy, 26th. Nothing about how much
-    Israel produces changed between one column and the other. Only the prices did.</p>
+      <figure>
+        <p>
+          <b>Israel falls further than anyone else.</b> Every line is an OECD
+          country, ranked by income per person two different ways. Korea and
+          Poland climb because their prices are low. Israel's drop of fifteen
+          places is nearly double the next biggest, which is New Zealand's
+          eight.
+        </p>
+        <div data-chart="slope"></div>
+        <figcaption>
+          Source: IMF World Economic Outlook, April 2026 (2026 projections).
+          Ranks computed across the 38 OECD member countries only. My own
+          calculation.
+        </figcaption>
+      </figure>
 
-  <figure>
-    <p><b>Israel falls further than anyone else.</b> Every line is an OECD country, ranked by
-      income per person two different ways. Korea and Poland climb because their prices are low.
-      Israel's drop of fifteen places is nearly double the next biggest, which is New Zealand's
-      eight.</p>
-    <div data-chart="slope"></div>
-    <figcaption>Source: IMF World Economic Outlook, April 2026 (2026 projections). Ranks computed
-      across the 38 OECD member countries only. My own calculation.</figcaption>
-  </figure>
+      <h2>What these numbers actually measure</h2>
 
-  <h2>What these numbers actually measure</h2>
+      <p>
+        Quick definitions, because the rest of this depends on them. GDP is the
+        total value of what a country produces. Divide it by the population and
+        you get GDP per capita, which is output per person and gets used as a
+        rough stand-in for average income.
+      </p>
 
-  <p>Quick definitions, because the rest of this depends on them. GDP is the total value of what a
-    country produces. Divide it by the population and you get GDP per capita, which is output per
-    person and gets used as a rough stand-in for average income.</p>
+      <p>
+        The problem is the conversion. Turning shekels into dollars at the
+        market exchange rate tells you how much money there is. It tells you
+        nothing about what that money does once it's in your hand. Say one
+        country produces $70,000 per person and another produces $60,000. The
+        first looks richer, until you find out that rent and groceries cost a
+        third more there, at which point the person on $60,000 is probably
+        living better.
+      </p>
 
-  <p>The problem is the conversion. Turning shekels into dollars at the market exchange rate tells
-    you how much money there is. It tells you nothing about what that money does once it's in your
-    hand. Say one country produces $70,000 per person and another produces $60,000. The first looks
-    richer, until you find out that rent and groceries cost a third more there, at which point the
-    person on $60,000 is probably living better.</p>
+      <p>
+        <em>Purchasing Power Parity</em>, or PPP, is the fix for this. Instead
+        of the market exchange rate it converts currencies using the relative
+        price of a comparable basket of goods. It's answering a different
+        question, and for what I'm interested in here, a better one: not how
+        much money is there, but how much does it buy.
+      </p>
 
-  <p><em>Purchasing Power Parity</em>, or PPP, is the fix for this. Instead of the market exchange
-    rate it converts currencies using the relative price of a comparable basket of goods. It's
-    answering a different question, and for what I'm interested in here, a better one: not how much
-    money is there, but how much does it buy.</p>
+      <aside>
+        <p>
+          <b>One thing this is not.</b> PPP-adjusted GDP per capita is not your
+          salary. It measures the <em>volume of output</em> an economy produces
+          at local prices, divided by the number of people. Israel's $59,095
+          doesn't mean Israelis earn $59,095, and it doesn't mean we consume
+          less than we do.
+        </p>
+        <p>
+          What it does mean is narrower. Once you account for international
+          price differences, each unit of Israeli output commands less in real
+          goods and services than the exchange rate suggests. That's the whole
+          claim. I'd rather make a small true one than a big vague one.
+        </p>
+      </aside>
 
-  <aside>
-    <p><b>One thing this is not.</b> PPP-adjusted GDP per capita is not your salary. It measures
-      the <em>volume of output</em> an economy produces at local prices, divided by the number of
-      people. Israel's $59,095 doesn't mean Israelis earn $59,095, and it doesn't mean we consume
-      less than we do.</p>
-    <p>What it does mean is narrower. Once you account for international price differences, each
-      unit of Israeli output commands less in real goods and services than the exchange rate
-      suggests. That's the whole claim. I'd rather make a small true one than a big vague one.</p>
-  </aside>
+      <h2>How expensive, exactly</h2>
 
-  <h2>How expensive, exactly</h2>
+      <p>
+        Divide the nominal figure by the PPP figure and the ratio you get is
+        itself a measurement: the comparative price level, or how costly a
+        country is against some benchmark. Put the United States at 100 and
+        Israel lands on 118.
+      </p>
 
-  <p>Divide the nominal figure by the PPP figure and the ratio you get is itself a measurement: the
-    comparative price level, or how costly a country is against some benchmark. Put the United
-    States at 100 and Israel lands on 118.</p>
+      <p>
+        Only Iceland and Switzerland are more expensive in the whole OECD. We
+        sit 52% above the OECD's simple average, and we're more expensive than
+        Norway, Denmark, the Netherlands and Ireland, all of which produce more
+        per person than we do.
+      </p>
 
-  <p>Only Iceland and Switzerland are more expensive in the whole OECD. We sit 52% above the OECD's
-    simple average, and we're more expensive than Norway, Denmark, the Netherlands and Ireland, all
-    of which produce more per person than we do.</p>
+      <figure>
+        <p>
+          <b>Third most expensive country in the OECD.</b> Comparative price
+          level, United States = 100. Derived from the ratio of nominal to PPP
+          GDP per person, which is the implied purchasing power conversion rate
+          measured against the market exchange rate.
+        </p>
+        <div data-chart="prices"></div>
+        <figcaption>
+          Source: IMF World Economic Outlook, April 2026. My own calculation.
+          The OECD's 2025 Economic Survey of Israel gets to the same qualitative
+          place by a different route: Israel's comparative price level is among
+          the highest in the OECD.
+        </figcaption>
+      </figure>
 
-  <figure>
-    <p><b>Third most expensive country in the OECD.</b> Comparative price level, United States =
-      100. Derived from the ratio of nominal to PPP GDP per person, which is the implied purchasing
-      power conversion rate measured against the market exchange rate.</p>
-    <div data-chart="prices"></div>
-    <figcaption>Source: IMF World Economic Outlook, April 2026. My own calculation. The OECD's 2025
-      Economic Survey of Israel gets to the same qualitative place by a different route: Israel's
-      comparative price level is among the highest in the OECD.</figcaption>
-  </figure>
+      <p>
+        Being expensive isn't automatically a problem. Switzerland is expensive
+        and Swiss output per person is somewhere around $106,000. Prices
+        generally rise with productivity, and a rich country with high wages
+        will have costly haircuts and restaurant meals. Nothing strange about
+        that.
+      </p>
 
-  <p>Being expensive isn't automatically a problem. Switzerland is expensive and Swiss output per
-    person is somewhere around $106,000. Prices generally rise with productivity, and a rich country
-    with high wages will have costly haircuts and restaurant meals. Nothing strange about that.</p>
+      <p>
+        Israel doesn't fit that pattern, and that's the part I want to spend
+        time on.
+      </p>
 
-  <p>Israel doesn't fit that pattern, and that's the part I want to spend time on.</p>
+      <h2>More expensive than our income explains</h2>
 
-  <h2>More expensive than our income explains</h2>
+      <p>
+        Plot every OECD country's output per person against its price level and
+        the relationship is obvious enough: richer countries cost more. Fit a
+        line through it and you can ask a sharper question. Given what a country
+        produces, how expensive should it be?
+      </p>
 
-  <p>Plot every OECD country's output per person against its price level and the relationship is
-    obvious enough: richer countries cost more. Fit a line through it and you can ask a sharper
-    question. Given what a country produces, how expensive should it be?</p>
+      <p>
+        Israel sits further above that line than anyone else in the OECD. Our
+        output per person predicts a price level of about 73. We run at 118.
+        Call it 62% more expensive than our own productivity accounts for.
+      </p>
 
-  <p>Israel sits further above that line than anyone else in the OECD. Our output per person
-    predicts a price level of about 73. We run at 118. Call it 62% more expensive than our own
-    productivity accounts for.</p>
+      <figure>
+        <p>
+          <b>Israel is the OECD's biggest outlier.</b> Output per person against
+          price level. The dashed line is what prices tend to be, on average, at
+          each level of output. Israel sits furthest above it.
+        </p>
+        <div data-chart="scatter"></div>
+        <figcaption>
+          Source: IMF World Economic Outlook, April 2026. Ordinary least squares
+          fit across OECD members. Luxembourg and Ireland are left out of the
+          plot because their GDP is inflated by corporate accounting and they'd
+          drag the line. The OECD's 2025 survey puts the gap nearer 35% using a
+          different method and vintage — the two disagree on size and agree on
+          direction.
+        </figcaption>
+      </figure>
 
-  <figure>
-    <p><b>Israel is the OECD's biggest outlier.</b> Output per person against price level. The
-      dashed line is what prices tend to be, on average, at each level of output. Israel sits
-      furthest above it.</p>
-    <div data-chart="scatter"></div>
-    <figcaption>Source: IMF World Economic Outlook, April 2026. Ordinary least squares fit across
-      OECD members. Luxembourg and Ireland are left out of the plot because their GDP is inflated by
-      corporate accounting and they'd drag the line. The OECD's 2025 survey puts the gap nearer 35%
-      using a different method and vintage — the two disagree on size and agree on direction.</figcaption>
-  </figure>
+      <p>
+        That 62% is one specification, so I ran eight: the 2026 projection and
+        the 2024 outturn, output entered linearly and in logs, with and without
+        the Luxembourg and Ireland exclusion. The gap moves around a good deal —
+        between 45% and 62% — and 62% is the largest of them, which is worth
+        saying plainly. What doesn't move is the ordering.
+        <b>Israel is the single biggest positive residual in all eight.</b> No
+        specification puts another OECD country further above the line, and none
+        puts Israel anywhere near it.
+      </p>
 
-  <p>That 62% is one specification, so I ran eight: the 2026 projection and the 2024 outturn,
-    output entered linearly and in logs, with and without the Luxembourg and Ireland exclusion.
-    The gap moves around a good deal — between 45% and 62% — and 62% is the largest of them, which
-    is worth saying plainly. What doesn't move is the ordering. <b>Israel is the single biggest
-    positive residual in all eight.</b> No specification puts another OECD country further above
-    the line, and none puts Israel anywhere near it.</p>
+      <blockquote>
+        We have high incomes. We also have prices that our incomes don't
+        explain.
+      </blockquote>
 
-  <blockquote>We have high incomes. We also have prices that our incomes don't explain.</blockquote>
+      <h2>Why "raise wages" is only half an answer</h2>
 
-  <h2>Why "raise wages" is only half an answer</h2>
+      <p>
+        The obvious response to a cost-of-living problem is to push wages up.
+        Higher wages are good and I'd like more of them. But wages and prices
+        aren't independent of each other. If pay goes up while rent and
+        groceries and electricity go up alongside it, most of the raise is gone
+        before it reaches anyone's savings.
+      </p>
 
-  <p>The obvious response to a cost-of-living problem is to push wages up. Higher wages are good and
-    I'd like more of them. But wages and prices aren't independent of each other. If pay goes up
-    while rent and groceries and electricity go up alongside it, most of the raise is gone before it
-    reaches anyone's savings.</p>
+      <p>
+        There's a second route to a higher standard of living and it gets far
+        less attention: make the same salary buy more.
+      </p>
 
-  <p>There's a second route to a higher standard of living and it gets far less attention: make the
-    same salary buy more.</p>
+      <p>
+        Take a household on ₪12,000 a month. If the essentials take ₪10,000,
+        there's ₪2,000 left over. Now cut the cost of those essentials by 15%,
+        by whatever combination of competition and imports and reform gets you
+        there. The salary hasn't moved. Nobody got a raise. But what's left at
+        the end of the month goes from ₪2,000 to ₪3,500. A 15% cut in prices
+        produced a 75% increase in slack.
+      </p>
 
-  <p>Take a household on ₪12,000 a month. If the essentials take ₪10,000, there's ₪2,000 left over.
-    Now cut the cost of those essentials by 15%, by whatever combination of competition and imports
-    and reform gets you there. The salary hasn't moved. Nobody got a raise. But what's left at the
-    end of the month goes from ₪2,000 to ₪3,500. A 15% cut in prices produced a 75% increase in
-    slack.</p>
+      <figure>
+        <p>
+          <b>The same salary, doing more work.</b> Illustrative household
+          arithmetic, not measured data. The point is the leverage.
+          Discretionary income is whatever survives a large fixed block of
+          essentials, so small percentage cuts in prices turn into large
+          percentage gains in what's left.
+        </p>
+        <div data-chart="budget"></div>
+        <figcaption>
+          My own illustration. The income roughly tracks an average Israeli net
+          monthly wage; the split between categories is representative rather
+          than survey-derived.
+        </figcaption>
+      </figure>
 
-  <figure>
-    <p><b>The same salary, doing more work.</b> Illustrative household arithmetic, not measured
-      data. The point is the leverage. Discretionary income is whatever survives a large fixed block
-      of essentials, so small percentage cuts in prices turn into large percentage gains in what's
-      left.</p>
-    <div data-chart="budget"></div>
-    <figcaption>My own illustration. The income roughly tracks an average Israeli net monthly wage;
-      the split between categories is representative rather than survey-derived.</figcaption>
-  </figure>
+      <p>
+        That leverage is why cost-of-living reform is worth the effort. It's
+        also roughly why it doesn't happen much. The people who'd gain are
+        everyone, spread thin and not paying attention. The people who'd lose
+        are few, and they are paying attention.
+      </p>
 
-  <p>That leverage is why cost-of-living reform is worth the effort. It's also roughly why it
-    doesn't happen much. The people who'd gain are everyone, spread thin and not paying attention.
-    The people who'd lose are few, and they are paying attention.</p>
+      <h2>So why is Israel expensive?</h2>
 
-  <h2>So why is Israel expensive?</h2>
+      <p>
+        There's no single reason, and some of the reasons aren't anybody's
+        fault. Israel is small, cut off geographically from most of its natural
+        trading partners, with almost no overland trade and real security costs.
+        You can't legislate your way out of a map.
+      </p>
 
-  <p>There's no single reason, and some of the reasons aren't anybody's fault. Israel is small, cut
-    off geographically from most of its natural trading partners, with almost no overland trade and
-    real security costs. You can't legislate your way out of a map.</p>
+      <p>
+        But plenty of it is policy. The OECD's 2025 Economic Survey of Israel
+        points at barriers to trade, heavy red tape, weak competitive pressure
+        and restrictive product-market regulation. Those are choices, and
+        choices can be unmade.
+      </p>
 
-  <p>But plenty of it is policy. The OECD's 2025 Economic Survey of Israel points at barriers to
-    trade, heavy red tape, weak competitive pressure and restrictive product-market regulation.
-    Those are choices, and choices can be unmade.</p>
+      <h2>Seven things Israel could actually do</h2>
 
-  <h2>Seven things Israel could actually do</h2>
+      <h3>1. Open the country to imports</h3>
+      <p>
+        If Israelis can buy from dozens of foreign suppliers, Israeli firms have
+        to compete on price. More competition squeezes margins, and margins are
+        a real share of what we pay.
+      </p>
+      <p>
+        Some of this is already underway. The
+        <em>What's Good for Europe Is Good for Israel</em> reform came into
+        force on 1 January 2025 and set up an import track based on complying
+        with European regulation rather than repeating the testing here, with
+        dozens of EU regulations phased in through 2028. An American track
+        followed, letting products that meet US federal requirements in as an
+        alternative to certain Israeli standards.
+      </p>
+      <p>
+        Right direction. I'd push it further. If something is legally on sale in
+        the United States or the EU, we shouldn't be re-testing it here unless
+        there's a genuine safety reason to. Importing ought to be dull and
+        cheap.
+      </p>
 
-  <h3>1. Open the country to imports</h3>
-  <p>If Israelis can buy from dozens of foreign suppliers, Israeli firms have to compete on price.
-    More competition squeezes margins, and margins are a real share of what we pay.</p>
-  <p>Some of this is already underway. The <em>What's Good for Europe Is Good for Israel</em> reform
-    came into force on 1 January 2025 and set up an import track based on complying with European
-    regulation rather than repeating the testing here, with dozens of EU regulations phased in
-    through 2028. An American track followed, letting products that meet US federal requirements in
-    as an alternative to certain Israeli standards.</p>
-  <p>Right direction. I'd push it further. If something is legally on sale in the United States or
-    the EU, we shouldn't be re-testing it here unless there's a genuine safety reason to. Importing
-    ought to be dull and cheap.</p>
+      <h3>2. Break up concentrated markets</h3>
+      <p>
+        Competition doesn't do much when there are four suppliers. The OECD
+        singles out Israeli food retail, where a handful of firms control whole
+        categories.
+      </p>
+      <p>
+        The answer usually isn't price controls. It's arranging things so that
+        fifty firms can exist where there are currently five. A foreign
+        supermarket chain that wants to open here should find that easy. A new
+        importer that wants to undercut an incumbent should find that easy too.
+      </p>
 
-  <h3>2. Break up concentrated markets</h3>
-  <p>Competition doesn't do much when there are four suppliers. The OECD singles out Israeli food
-    retail, where a handful of firms control whole categories.</p>
-  <p>The answer usually isn't price controls. It's arranging things so that fifty firms can exist
-    where there are currently five. A foreign supermarket chain that wants to open here should find
-    that easy. A new importer that wants to undercut an incumbent should find that easy too.</p>
+      <h3>3. Build more housing</h3>
+      <p>
+        Housing is the biggest line in most Israeli household budgets and the
+        one that's moved the most. Demand grows faster than supply and prices go
+        up. Our population grows at about 2% a year, which is fast for the OECD.
+      </p>
+      <p>
+        Helping buyers without building anything backfires. Give people more
+        purchasing power against a fixed supply and a good chunk of it
+        capitalises straight into the price. What works is slower and duller:
+        faster approvals, more rezoning, density near transport, infrastructure
+        going in before the neighbourhood does, and a rental market that
+        actually functions. None of that makes housing cheap next year. Over ten
+        years it decides whether housing is affordable at all.
+      </p>
 
-  <h3>3. Build more housing</h3>
-  <p>Housing is the biggest line in most Israeli household budgets and the one that's moved the
-    most. Demand grows faster than supply and prices go up. Our population grows at about 2% a year,
-    which is fast for the OECD.</p>
-  <p>Helping buyers without building anything backfires. Give people more purchasing power against
-    a fixed supply and a good chunk of it capitalises straight into the price. What works is slower
-    and duller: faster approvals, more rezoning, density near transport, infrastructure going in
-    before the neighbourhood does, and a rental market that actually functions. None of that makes
-    housing cheap next year. Over ten years it decides whether housing is affordable at all.</p>
+      <h3>4. Make transport cheaper</h3>
+      <p>
+        Housing and transport are the same problem looked at twice. Price people
+        out of living near work and they pay the difference in cars, fuel,
+        insurance and hours of their life. The fix isn't more roads. Mostly it's
+        transit, plus housing near where the jobs already are.
+      </p>
 
-  <h3>4. Make transport cheaper</h3>
-  <p>Housing and transport are the same problem looked at twice. Price people out of living near
-    work and they pay the difference in cars, fuel, insurance and hours of their life. The fix isn't
-    more roads. Mostly it's transit, plus housing near where the jobs already are.</p>
+      <h3>5. Make it easier to start a business</h3>
+      <p>
+        Every unnecessary regulation costs money. Somebody has to read it, apply
+        for the permit, sit through the inspection and wait for the approval,
+        and all of that ends up in the price the customer pays.
+      </p>
+      <p>
+        The OECD's suggestions here are specific: one-stop company formation, a
+        "silence is consent" rule for permits and licences, fewer administrative
+        steps in general. The test for any rule should be whether what it
+        achieves is worth what it costs.
+      </p>
 
-  <h3>5. Make it easier to start a business</h3>
-  <p>Every unnecessary regulation costs money. Somebody has to read it, apply for the permit, sit
-    through the inspection and wait for the approval, and all of that ends up in the price the
-    customer pays.</p>
-  <p>The OECD's suggestions here are specific: one-stop company formation, a "silence is consent"
-    rule for permits and licences, fewer administrative steps in general. The test for any rule
-    should be whether what it achieves is worth what it costs.</p>
+      <h3>6. More competition in financial services</h3>
+      <p>
+        Banking competition shows up in mortgage rates, loan terms, deposit
+        rates, fees and investment products, which between them are most of the
+        plumbing of a household's finances. People should be able to switch
+        banks without it turning into a project, and compare prices honestly. A
+        bank that thinks you might leave has a reason to treat you better.
+      </p>
 
-  <h3>6. More competition in financial services</h3>
-  <p>Banking competition shows up in mortgage rates, loan terms, deposit rates, fees and investment
-    products, which between them are most of the plumbing of a household's finances. People should
-    be able to switch banks without it turning into a project, and compare prices honestly. A bank
-    that thinks you might leave has a reason to treat you better.</p>
+      <h3>7. Don't confuse subsidies with affordability</h3>
+      <p>
+        A government can always make something cheaper by paying part of the
+        bill. That isn't the same as the thing costing less. Subsidise an
+        expensive product while protecting its producers from competition and
+        taxpayers end up funding the inefficiency indefinitely.
+      </p>
+      <p>
+        Targeted help for people who need it is necessary and I'm not arguing
+        against it. It just shouldn't be a substitute for removing whatever made
+        things expensive in the first place.
+      </p>
 
-  <h3>7. Don't confuse subsidies with affordability</h3>
-  <p>A government can always make something cheaper by paying part of the bill. That isn't the same
-    as the thing costing less. Subsidise an expensive product while protecting its producers from
-    competition and taxpayers end up funding the inefficiency indefinitely.</p>
-  <p>Targeted help for people who need it is necessary and I'm not arguing against it. It just
-    shouldn't be a substitute for removing whatever made things expensive in the first place.</p>
+      <h2>The honest counterargument</h2>
 
-  <h2>The honest counterargument</h2>
+      <p>Three objections, and I think all three are fair.</p>
 
-  <p>Three objections, and I think all three are fair.</p>
+      <p>
+        <b>The shekel is doing a lot of this, and 118 is a forecast.</b> A
+        country with a strong export sector tends to have a strong currency, and
+        a strong currency pushes the comparative price level up without a single
+        price tag changing. When I went back through the series I found this
+        objection is bigger than I'd assumed. Israel's price level has hovered
+        around the United States for three decades — it averages 99 from 1995 to
+        2024, and the 2024 outturn was <b>100.3</b>. The 118 is the IMF's
+        projection for a year that hasn't finished, and it is the highest figure
+        anywhere in the series. Between 2024 and 2026 the IMF has our output per
+        person rising 29% in dollars but only 9% in PPP terms; almost all of
+        that wedge is the exchange rate, not the supermarket. A strong shekel
+        also makes imports cheaper, which pushes the other way.
+      </p>
 
-  <p><b>The shekel is doing a lot of this, and 118 is a forecast.</b> A country with a strong
-    export sector tends to have a strong currency, and a strong currency pushes the comparative
-    price level up without a single price tag changing. When I went back through the series I
-    found this objection is bigger than I'd assumed. Israel's price level has hovered around the
-    United States for three decades — it averages 99 from 1995 to 2024, and the 2024 outturn was
-    <b>100.3</b>. The 118 is the IMF's projection for a year that hasn't finished, and it is the
-    highest figure anywhere in the series. Between 2024 and 2026 the IMF has our output per person
-    rising 29% in dollars but only 9% in PPP terms; almost all of that wedge is the exchange rate,
-    not the supermarket. A strong shekel also makes imports cheaper, which pushes the other way.</p>
+      <p>
+        What survives that is the ranking rather than the level. On the settled
+        2024 numbers Israel is still the third most expensive country in the
+        OECD, still 40% above the OECD average, and still the biggest outlier in
+        the regression. I'd rather quote a number that moves and say so than
+        quote one that sounds fixed.
+      </p>
 
-  <p>What survives that is the ranking rather than the level. On the settled 2024 numbers Israel is
-    still the third most expensive country in the OECD, still 40% above the OECD average, and still
-    the biggest outlier in the regression. I'd rather quote a number that moves and say so than
-    quote one that sounds fixed.</p>
+      <p>
+        <b>Some of the cost isn't going anywhere.</b> Distance from trading
+        partners, no overland routes, genuine security spending. No competition
+        policy touches any of that.
+      </p>
 
-  <p><b>Some of the cost isn't going anywhere.</b> Distance from trading partners, no overland
-    routes, genuine security spending. No competition policy touches any of that.</p>
+      <p>
+        <b>PPP comparisons are rough.</b> The baskets are approximations, the
+        conversion factors are estimates, and reasonable methods disagree. My
+        calculation puts the gap between Israeli prices and what our output
+        predicts at about 62%. The OECD's puts it closer to 35%. Those are not
+        the same number and I'm not going to pretend otherwise.
+      </p>
 
-  <p><b>PPP comparisons are rough.</b> The baskets are approximations, the conversion factors are
-    estimates, and reasonable methods disagree. My calculation puts the gap between Israeli prices
-    and what our output predicts at about 62%. The OECD's puts it closer to 35%. Those are not the
-    same number and I'm not going to pretend otherwise.</p>
+      <p>
+        To see how far apart the methods really are I ran the whole thing again
+        on the World Bank's numbers, which come from a different institution
+        using a different price survey. It puts Israel's price level at 94.7 for
+        2024, fourth in the OECD rather than third, and 35% above the OECD
+        average — near enough exactly the figure I'd credited to the OECD. The
+        two sources rank the 38 countries almost identically (a rank correlation
+        of 0.96) and disagree about Israel's level by roughly the width of the
+        argument. So the honest range is something like 35% to 60%, not a single
+        number.
+      </p>
 
-  <p>To see how far apart the methods really are I ran the whole thing again on the World Bank's
-    numbers, which come from a different institution using a different price survey. It puts
-    Israel's price level at 94.7 for 2024, fourth in the OECD rather than third, and 35% above the
-    OECD average — near enough exactly the figure I'd credited to the OECD. The two sources rank
-    the 38 countries almost identically (a rank correlation of 0.96) and disagree about Israel's
-    level by roughly the width of the argument. So the honest range is something like 35% to 60%,
-    not a single number.</p>
+      <p>
+        What the objections change is the size of the thing. They don't change
+        its sign. Every method I've looked at finds Israeli prices high relative
+        to Israeli output, and the OECD, which is not exactly a radical outfit,
+        attributes a meaningful share of it to trade barriers, red tape and thin
+        competition. The policy conclusion doesn't depend on whether the number
+        turns out to be 62 or 35.
+      </p>
 
-  <p>What the objections change is the size of the thing. They don't change its sign. Every method
-    I've looked at finds Israeli prices high relative to Israeli output, and the OECD, which is not
-    exactly a radical outfit, attributes a meaningful share of it to trade barriers, red tape and
-    thin competition. The policy conclusion doesn't depend on whether the number turns out to be 62
-    or 35.</p>
+      <h2>What I'm actually arguing for</h2>
 
-  <h2>What I'm actually arguing for</h2>
+      <p>
+        Not a bigger GDP figure. Growth matters because it's real production,
+        but what people care about is what that production lets them do with
+        their lives. A ₪15,000 salary somewhere affordable can support a better
+        life than ₪20,000 somewhere expensive. That's the entire reason
+        purchasing power is worth measuring in the first place.
+      </p>
 
-  <p>Not a bigger GDP figure. Growth matters because it's real production, but what people care
-    about is what that production lets them do with their lives. A ₪15,000 salary somewhere
-    affordable can support a better life than ₪20,000 somewhere expensive. That's the entire reason
-    purchasing power is worth measuring in the first place.</p>
+      <p>
+        Israel doesn't have to become a richer country before Israelis are
+        better off. The money we already make needs to go further. Open up
+        imports, make it easier for a new firm to challenge an old one, build
+        housing, fix transport, cut the paperwork.
+      </p>
 
-  <p>Israel doesn't have to become a richer country before Israelis are better off. The money we
-    already make needs to go further. Open up imports, make it easier for a new firm to challenge an
-    old one, build housing, fix transport, cut the paperwork.</p>
+      <p>
+        A country can have world-class technology, serious exports and a $700
+        billion economy and still be needlessly expensive for the people who
+        live in it. Growing the pie is one problem. Making it cost less to buy
+        is a different problem, and we've barely started on that one.
+      </p>
 
-  <p>A country can have world-class technology, serious exports and a $700 billion economy and still
-    be needlessly expensive for the people who live in it. Growing the pie is one problem. Making it
-    cost less to buy is a different problem, and we've barely started on that one.</p>
+      <blockquote>
+        A salary in Israel should go further than it does.
+      </blockquote>
 
-  <blockquote>A salary in Israel should go further than it does.</blockquote>
+      <aside>
+        <p>
+          <b>Sources and method.</b> All income and price figures are IMF World
+          Economic Outlook projections for 2026, published April 2026. Rankings
+          are computed across the 38 OECD member countries rather than every
+          economy, so the comparison group stays the same between the nominal
+          and PPP columns.
+        </p>
+        <p>
+          Comparative price level is derived as nominal GDP per capita divided
+          by PPP GDP per capita, indexed to the United States at 100. The claims
+          about trade barriers, product-market regulation, food-retail
+          concentration and administrative burden come from the OECD Economic
+          Survey of Israel, 2025. The household budget figure is illustrative
+          and labelled as such.
+        </p>
+        <p>
+          <b>Check it yourself.</b> The full analysis is a Jupyter notebook:
+          <a href="../analysis/israel-cost-of-living.html">read it here</a>, or
+          take the
+          <a href="https://github.com/DavidZeff1"
+            >source notebook from the repository</a
+          >
+          and re-run it. It pulls both indicators from the
+          <a href="https://www.imf.org/external/datamapper/api/v1/"
+            >IMF DataMapper API</a
+          >, asserts every figure quoted on this page, runs the regression under
+          eight specifications, cross-checks the result against World Bank ICP
+          data, and writes <code>assets/data.js</code> — the file the four
+          charts here read — as its last step. If I've got something wrong I'd
+          like to hear about it.
+        </p>
+      </aside>
 
-  <aside>
-    <p><b>Sources and method.</b> All income and price figures are IMF World Economic Outlook
-      projections for 2026, published April 2026. Rankings are computed across the 38 OECD member
-      countries rather than every economy, so the comparison group stays the same between the
-      nominal and PPP columns.</p>
-    <p>Comparative price level is derived as nominal GDP per capita divided by PPP GDP per capita,
-      indexed to the United States at 100. The claims about trade barriers, product-market
-      regulation, food-retail concentration and administrative burden come from the OECD Economic
-      Survey of Israel, 2025. The household budget figure is illustrative and labelled as such.</p>
-    <p><b>Check it yourself.</b> The full analysis is a Jupyter notebook:
-      <a href="../analysis/israel-cost-of-living.html">read it here</a>, or take the
-      <a href="https://github.com/DavidZeff1">source notebook from the repository</a> and re-run it.
-      It pulls both indicators from the
-      <a href="https://www.imf.org/external/datamapper/api/v1/">IMF DataMapper API</a>, asserts
-      every figure quoted on this page, runs the regression under eight specifications, cross-checks
-      the result against World Bank ICP data, and writes <code>assets/data.js</code> — the file the
-      four charts here read — as its last step. If I've got something wrong I'd like to hear about
-      it.</p>
-  </aside>
+      <p><a href="../">← All essays</a></p>
+    </main>
 
-  <p><a href="../">← All essays</a></p>
+    <footer>
+      <span>© 2026 David Zeff</span>
+      <span>
+        <a href="mailto:dpzeff@gmail.com">Email</a>
+        <a href="https://github.com/DavidZeff1">GitHub</a>
+        <a href="https://linkedin.com/in/david-zeff-computerscience141592"
+          >LinkedIn</a
+        >
+      </span>
+    </footer>
 
-</main>
-
-<footer>
-  <span>© 2026 David Zeff</span>
-  <span>
-    <a href="mailto:dpzeff@gmail.com">Email</a>
-    <a href="https://github.com/DavidZeff1">GitHub</a>
-    <a href="https://linkedin.com/in/david-zeff-computerscience141592">LinkedIn</a>
-  </span>
-</footer>
-
-<script src="../assets/data.js"></script>
-<script src="../assets/flags.js"></script>
-<script src="../assets/charts.js"></script>
-</body>
+    <script src="../assets/data.js"></script>
+    <script src="../assets/flags.js"></script>
+    <script src="../assets/charts.js"></script>
+  </body>
 </html>
